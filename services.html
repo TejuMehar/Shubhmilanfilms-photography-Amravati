@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Shubhmilanfilms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0a0a0a',
+                        'gold': '#d4af37',
+                        'dark-gray': '#1a1a1a'
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        .fade-in { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .scale-hover { transition: transform 0.3s ease; }
+        .scale-hover:hover { transform: scale(1.02); }
+        
+        .navbar-blur { backdrop-filter: blur(10px); background: rgba(10, 10, 10, 0.9); }
+    </style>
+</head>
+<body class="bg-dark-bg text-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 navbar-blur border-b border-gray-800 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-serif font-bold text-gold">
+                    <a href="index.html" class="hover:text-white transition-colors">Shubhmilanfilms</a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-gold transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-gold transition-colors">About</a>
+                    <a href="services.html" class="hover:text-gold transition-colors text-gold">Services</a>
+                    <a href="gallery.html" class="hover:text-gold transition-colors">Gallery</a>
+                    <a href="contact.html" class="hover:text-gold transition-colors">Contact</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <a href="contact.html" class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium">
+                        Book Now
+                    </a>
+                </div>
+                
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="md:hidden mt-4 pb-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="hover:text-gold transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-gold transition-colors">About</a>
+                    <a href="services.html" class="hover:text-gold transition-colors text-gold">Services</a>
+                    <a href="gallery.html" class="hover:text-gold transition-colors">Gallery</a>
+                    <a href="contact.html" class="hover:text-gold transition-colors">Contact</a>
+                    <a href="contact.html" class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium inline-block text-center mt-4">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 bg-gradient-to-b from-dark-gray to-dark-bg">
+        <div class="container mx-auto text-center animate-on-scroll">
+            <h1 class="text-5xl md:text-6xl font-serif font-bold mb-6">
+                Our <span class="text-gold">Services</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Comprehensive wedding photography and cinematography services tailored to capture your unique love story
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto">
+            <!-- Wedding Photography -->
+            <div class="mb-20 animate-on-scroll">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-dark-bg text-2xl mr-4">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h2 class="text-4xl font-serif font-bold">Wedding Photography</h2>
+                        </div>
+                        <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                            Capture every precious moment of your special day with our artistic and candid photography style. 
+                            We focus on genuine emotions and beautiful compositions that tell your unique story.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Full day wedding coverage
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Candid and posed photography
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                High-resolution edited images
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Online gallery delivery
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold">
+                            Get Quote
+                        </a>
+                    </div>
+                    <div class="scale-hover">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Wedding Photography" class="w-full rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pre-Wedding Shoots -->
+            <div class="mb-20 animate-on-scroll">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="lg:order-2">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-dark-bg text-2xl mr-4">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h2 class="text-4xl font-serif font-bold">Pre-Wedding Shoots</h2>
+                        </div>
+                        <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                            Romantic and intimate sessions that capture your chemistry and connection before the big day. 
+                            Perfect for engagement announcements and wedding invitations.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Multiple location options
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Outfit change sessions
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Creative concept development
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Same-day preview images
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold">
+                            Get Quote
+                        </a>
+                    </div>
+                    <div class="lg:order-1 scale-hover">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Pre-Wedding Shoot" class="w-full rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cinematic Wedding Films -->
+            <div class="mb-20 animate-on-scroll">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-dark-bg text-2xl mr-4">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h2 class="text-4xl font-serif font-bold">Cinematic Wedding Films</h2>
+                        </div>
+                        <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                            Movie-like wedding films that capture the emotion, atmosphere, and story of your special day. 
+                            Professional cinematography with artistic storytelling.
+                        </p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                4K cinematic quality
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Professional audio recording
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Highlight reel & full ceremony
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-gold mr-3"></i>
+                                Custom music & color grading
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold">
+                            Get Quote
+                        </a>
+                    </div>
+                    <div class="scale-hover">
+                        <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Cinematic Films" class="w-full rounded-lg shadow-2xl">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Services -->
+            <div class="grid md:grid-cols-2 gap-8 animate-on-scroll">
+                <div class="bg-dark-gray p-8 rounded-lg scale-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg text-xl mr-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold">Candid Photography</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Natural, unposed moments that capture genuine emotions and spontaneous interactions throughout your celebration.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-dot-circle text-gold mr-3 text-xs"></i>
+                            Unobtrusive photography style
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-dot-circle text-gold mr-3 text-xs"></i>
+                            Guest interaction moments
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-dot-circle text-gold mr-3 text-xs"></i>
+                            Behind-the-scenes coverage
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="text-gold hover:text-white transition-colors">Learn More →</a>
+                </div>
+
+                <div class="bg-dark-gray p-8 rounded-lg scale-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg text-xl mr-4">
+                            <i class="fas fa-helicopter"></i>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold">Drone Photography</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        Stunning aerial shots and videos that provide unique perspectives of your venue and celebration from above.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-dot-circle text-gold mr-3 text-xs"></i>
+                            Aerial venue photography
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-dot-circle text-gold mr-3 text-xs"></i>
+                            Cinematic drone videos
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-dot-circle text-gold mr-3 text-xs"></i>
+                            Licensed drone operations
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="text-gold hover:text-white transition-colors">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customized Approach -->
+    <section class="py-20 px-6 bg-dark-gray">
+        <div class="container mx-auto text-center animate-on-scroll">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold mb-8">Customized Service Approach</h2>
+            <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                Every couple is unique, and so should be their wedding coverage. We tailor our services to match your vision, style, and budget.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gold rounded-full flex items-center justify-center text-dark-bg text-2xl mx-auto mb-6">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Consultation</h3>
+                    <p class="text-gray-400">
+                        Detailed discussion about your vision, preferences, and requirements for your special day.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gold rounded-full flex items-center justify-center text-dark-bg text-2xl mx-auto mb-6">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Customization</h3>
+                    <p class="text-gray-400">
+                        Tailored packages and services designed specifically for your wedding style and budget.
+                    </p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gold rounded-full flex items-center justify-center text-dark-bg text-2xl mx-auto mb-6">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold mb-4">Excellence</h3>
+                    <p class="text-gray-400">
+                        Flawless execution on your wedding day with attention to every detail and moment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Preview -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">Service Packages</h2>
+                <p class="text-xl text-gray-400">Choose the perfect package for your special day</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-dark-gray p-8 rounded-lg text-center scale-hover animate-on-scroll">
+                    <h3 class="text-2xl font-serif font-bold mb-4">Essential</h3>
+                    <div class="text-4xl font-bold text-gold mb-6">₹75,000</div>
+                    <ul class="space-y-3 mb-8 text-left">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            6 hours coverage
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            300+ edited photos
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Online gallery
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Basic highlight reel
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="block bg-gold text-dark-bg py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold">
+                        Choose Package
+                    </a>
+                </div>
+                
+                <div class="bg-gradient-to-b from-gold to-yellow-600 p-8 rounded-lg text-center scale-hover animate-on-scroll relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-dark-bg text-gold px-4 py-1 rounded-full text-sm font-semibold">
+                        Most Popular
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold mb-4 text-dark-bg">Premium</h3>
+                    <div class="text-4xl font-bold text-dark-bg mb-6">₹1,25,000</div>
+                    <ul class="space-y-3 mb-8 text-left">
+                        <li class="flex items-center text-dark-bg">
+                            <i class="fas fa-check text-dark-bg mr-3"></i>
+                            Full day coverage
+                        </li>
+                        <li class="flex items-center text-dark-bg">
+                            <i class="fas fa-check text-dark-bg mr-3"></i>
+                            500+ edited photos
+                        </li>
+                        <li class="flex items-center text-dark-bg">
+                            <i class="fas fa-check text-dark-bg mr-3"></i>
+                            Cinematic wedding film
+                        </li>
+                        <li class="flex items-center text-dark-bg">
+                            <i class="fas fa-check text-dark-bg mr-3"></i>
+                            Pre-wedding shoot
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="block bg-dark-bg text-gold py-3 rounded-full hover:bg-dark-gray transition-all duration-300 font-semibold">
+                        Choose Package
+                    </a>
+                </div>
+                
+                <div class="bg-dark-gray p-8 rounded-lg text-center scale-hover animate-on-scroll">
+                    <h3 class="text-2xl font-serif font-bold mb-4">Luxury</h3>
+                    <div class="text-4xl font-bold text-gold mb-6">₹2,00,000</div>
+                    <ul class="space-y-3 mb-8 text-left">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Multi-day coverage
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            1000+ edited photos
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Complete film package
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-gold mr-3"></i>
+                            Drone photography
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="block bg-gold text-dark-bg py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold">
+                        Choose Package
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 bg-gradient-to-r from-gold to-yellow-600">
+        <div class="container mx-auto text-center animate-on-scroll">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-bg mb-6">Ready to Book Your Date?</h2>
+            <p class="text-xl text-dark-bg mb-8 opacity-80">Let's discuss your wedding photography and cinematography needs</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-dark-bg text-gold px-8 py-4 rounded-full hover:bg-dark-gray transition-all duration-300 font-semibold text-lg">
+                    Book Consultation
+                </a>
+                <a href="gallery.html" class="border-2 border-dark-bg text-dark-bg px-8 py-4 rounded-full hover:bg-dark-bg hover:text-gold transition-all duration-300 font-semibold text-lg">
+                    View Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-gray border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-serif font-bold text-gold mb-4">Shubhmilanfilms</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Crafting visual stories of love, emotion, and timeless moments. Every frame tells a story. Every story lasts forever.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-gold transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-gold transition-colors">Services</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-gold transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Get In Touch</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-gold"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-gold"></i>
+                            <span>hello@shubhmilanfilms.com</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-3 text-gold mt-1"></i>
+                            <span>Mumbai, Maharashtra, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Shubhmilanfilms. All rights reserved. | Crafted with ❤️ for timeless memories</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

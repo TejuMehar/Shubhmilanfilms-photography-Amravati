@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}} - Shubhmilanfilms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "dark-bg": "#0a0a0a",
+              gold: "#d4af37",
+              "dark-gray": "#1a1a1a",
+            },
+            fontFamily: {
+              serif: ["Playfair Display", "serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
+      .fade-in {
+        animation: fadeIn 0.8s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide-in {
+        animation: slideIn 0.6s ease-out;
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      .scale-hover {
+        transition: transform 0.3s ease;
+      }
+      .scale-hover:hover {
+        transform: scale(1.05);
+      }
+
+      .navbar-blur {
+        backdrop-filter: blur(10px);
+        background: rgba(10, 10, 10, 0.9);
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-white font-sans">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 navbar-blur border-b border-gray-800 transition-all duration-300"
+    >
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <!-- Logo -->
+          <div class="text-2xl font-serif font-bold text-gold">
+            <a href="index.html" class="hover:text-white transition-colors"
+              >Shubhmilanfilms</a
+            >
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="index.html"
+              class="hover:text-gold transition-colors nav-link"
+              >Home</a
+            >
+            <a
+              href="about.html"
+              class="hover:text-gold transition-colors nav-link"
+              >About</a
+            >
+            <a
+              href="services.html"
+              class="hover:text-gold transition-colors nav-link"
+              >Services</a
+            >
+            <a
+              href="gallery.html"
+              class="hover:text-gold transition-colors nav-link"
+              >Gallery</a
+            >
+            <a
+              href="contact.html"
+              class="hover:text-gold transition-colors nav-link"
+              >Contact</a
+            >
+          </div>
+
+          <!-- CTA Button -->
+          <div class="hidden md:block">
+            <a
+              href="contact.html"
+              class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium"
+            >
+              Book Now
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button class="md:hidden text-white" id="mobile-menu-btn">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden mt-4 pb-4 hidden" id="mobile-menu">
+          <div class="flex flex-col space-y-4">
+            <a href="index.html" class="hover:text-gold transition-colors"
+              >Home</a
+            >
+            <a href="about.html" class="hover:text-gold transition-colors"
+              >About</a
+            >
+            <a href="services.html" class="hover:text-gold transition-colors"
+              >Services</a
+            >
+            <a href="gallery.html" class="hover:text-gold transition-colors"
+              >Gallery</a
+            >
+            <a href="contact.html" class="hover:text-gold transition-colors"
+              >Contact</a
+            >
+            <a
+              href="contact.html"
+              class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium inline-block text-center mt-4"
+            >
+              Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20">{{content}}</main>
+
+    <!-- Footer - Modern -->
+    <footer
+      class="bg-[linear-gradient(180deg,#070707,rgba(10,10,10,0.96))] border-t border-gray-800 mt-20"
+    >
+      <div class="container mx-auto px-6 py-14">
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          <!-- Brand + CTA -->
+          <div class="lg:col-span-4">
+            <div class="flex items-center mb-4">
+              <div class="text-3xl font-serif font-bold text-gold mr-3">
+                Shubhmilanfilms
+              </div>
+              <span class="text-sm text-gray-400"
+                >Cinematic Wedding Films & Photography</span
+              >
+            </div>
+            <p class="text-gray-400 mb-6 leading-relaxed">
+              We craft emotive films and timeless imagery that feel personal,
+              cinematic, and true to you.
+            </p>
+            <div class="flex gap-3 mb-6">
+              <a
+                href="contact.html"
+                class="bg-gold text-dark-bg px-4 py-2 rounded-full font-semibold hover:bg-white transition"
+                >Book Now</a
+              >
+              <a
+                href="gallery.html"
+                class="border border-gray-700 px-4 py-2 rounded-full text-gray-200 hover:bg-gray-800 transition"
+                >View Portfolio</a
+              >
+            </div>
+            <div class="flex items-center space-x-4">
+              <a
+                href="#"
+                class="social-icon text-gold text-xl hover:scale-110 transition transform"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="social-icon text-gold text-xl hover:scale-110 transition transform"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a
+                href="#"
+                class="social-icon text-gold text-xl hover:scale-110 transition transform"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                href="#"
+                class="social-icon text-gold text-xl hover:scale-110 transition transform"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Services quick list -->
+          <div class="lg:col-span-3">
+            <h4 class="text-lg font-semibold mb-4">Photography Services</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li>Wedding Photography</li>
+              <li>Pre-Wedding Shoots</li>
+              <li>Destination Photography</li>
+              <li>Commercial & Editorial</li>
+              <li>Albums & Prints</li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="lg:col-span-3">
+            <h4 class="text-lg font-semibold mb-4">Stay Updated</h4>
+            <p class="text-gray-400 mb-4">
+              Get our latest showreels and seasonal offers. No spam.
+            </p>
+            <form id="newsletterForm" class="flex gap-2">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your email"
+                required
+                class="w-full px-3 py-2 rounded-md bg-transparent border border-gray-700 text-gray-200 focus:border-gold outline-none"
+              />
+              <button
+                class="bg-gold text-dark-bg px-4 rounded-md font-semibold"
+              >
+                Join
+              </button>
+            </form>
+            <p
+              id="newsletterMsg"
+              class="text-sm text-green-400 mt-3 hidden"
+            ></p>
+          </div>
+
+          <!-- Contact / Hours -->
+          <div class="lg:col-span-2">
+            <h4 class="text-lg font-semibold mb-4">Contact</h4>
+            <div class="text-gray-300 space-y-2">
+              <div class="flex items-center">
+                <i class="fas fa-phone mr-3 text-gold"></i
+                ><span>+91 98765 43210</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-gold"></i
+                ><span>hello@shubhmilanfilms.com</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-map-marker-alt mr-3 text-gold mt-1"></i
+                ><span>Mumbai, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        >
+          <p class="text-sm">
+            &copy; 2024 Shubhmilanfilms. All rights reserved.
+          </p>
+          <p class="text-sm">
+            Designed &amp; Crafted with <span class="text-red-400">❤</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Newsletter simple UX
+      const newsletterForm = document.getElementById("newsletterForm");
+      if (newsletterForm) {
+        newsletterForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const msg = document.getElementById("newsletterMsg");
+          msg.textContent = "Thanks — you are subscribed!";
+          msg.classList.remove("hidden");
+          setTimeout(() => msg.classList.add("hidden"), 4000);
+          newsletterForm.reset();
+        });
+      }
+    </script>
+
+    <!-- Scripts -->
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector("nav");
+        if (window.scrollY > 100) {
+          navbar.classList.add("shadow-lg");
+        } else {
+          navbar.classList.remove("shadow-lg");
+        }
+      });
+
+      // Animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with animation classes
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+          observer.observe(el);
+        });
+      });
+    </script>
+  </body>
+</html>

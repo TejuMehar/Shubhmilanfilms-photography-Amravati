@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Shubhmilanfilms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0a0a0a',
+                        'gold': '#d4af37',
+                        'dark-gray': '#1a1a1a'
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        .fade-in { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .scale-hover { transition: transform 0.3s ease; }
+        .scale-hover:hover { transform: scale(1.05); }
+        
+        .navbar-blur { backdrop-filter: blur(10px); background: rgba(10, 10, 10, 0.9); }
+        
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid { column-count: 1; }
+        }
+        
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .masonry-grid { column-count: 2; }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .filter-btn.active {
+            background: #d4af37;
+            color: #0a0a0a;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 navbar-blur border-b border-gray-800 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-serif font-bold text-gold">
+                    <a href="index.html" class="hover:text-white transition-colors">Shubhmilanfilms</a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-gold transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-gold transition-colors">About</a>
+                    <a href="services.html" class="hover:text-gold transition-colors">Services</a>
+                    <a href="gallery.html" class="hover:text-gold transition-colors text-gold">Gallery</a>
+                    <a href="contact.html" class="hover:text-gold transition-colors">Contact</a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <a href="contact.html" class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium">
+                        Book Now
+                    </a>
+                </div>
+                
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="md:hidden mt-4 pb-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html" class="hover:text-gold transition-colors">Home</a>
+                    <a href="about.html" class="hover:text-gold transition-colors">About</a>
+                    <a href="services.html" class="hover:text-gold transition-colors">Services</a>
+                    <a href="gallery.html" class="hover:text-gold transition-colors text-gold">Gallery</a>
+                    <a href="contact.html" class="hover:text-gold transition-colors">Contact</a>
+                    <a href="contact.html" class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium inline-block text-center mt-4">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 bg-gradient-to-b from-dark-gray to-dark-bg">
+        <div class="container mx-auto text-center animate-on-scroll">
+            <h1 class="text-5xl md:text-6xl font-serif font-bold mb-6">
+                Our <span class="text-gold">Portfolio</span>
+            </h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                A collection of beautiful moments and timeless memories we've captured for our amazing couples
+            </p>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="py-12 px-6 bg-dark-gray">
+        <div class="container mx-auto">
+            <div class="flex flex-wrap justify-center gap-4 animate-on-scroll">
+                <button class="filter-btn active px-6 py-3 rounded-full border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all duration-300 font-medium" data-filter="all">
+                    All Work
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all duration-300 font-medium" data-filter="wedding">
+                    Weddings
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all duration-300 font-medium" data-filter="prewedding">
+                    Pre-Wedding
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all duration-300 font-medium" data-filter="candid">
+                    Candid
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all duration-300 font-medium" data-filter="portraits">
+                    Portraits
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="masonry-grid" id="gallery-grid">
+                <!-- Wedding Photos -->
+                <div class="masonry-item gallery-item wedding" data-category="wedding">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding ceremony" class="w-full rounded-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-search-plus text-white text-2xl opacity-0 hover:opacity-100 transition-opacity duration-300"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item prewedding" data-category="prewedding">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pre-wedding shoot" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item wedding" data-category="wedding">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding reception" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item portraits" data-category="portraits">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bridal portrait" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item candid" data-category="candid">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Candid moment" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item wedding" data-category="wedding">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding details" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item prewedding" data-category="prewedding">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Couple portrait" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item candid" data-category="candid">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding celebration" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item portraits" data-category="portraits">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Groom portrait" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item wedding" data-category="wedding">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding rings" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item prewedding" data-category="prewedding">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Engagement shoot" class="w-full rounded-lg">
+                    </div>
+                </div>
+
+                <div class="masonry-item gallery-item candid" data-category="candid">
+                    <div class="scale-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1460978812857-470ed1c77af0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')">
+                        <img src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding dance" class="w-full rounded-lg">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-12 animate-on-scroll">
+                <button id="load-more" class="bg-gold text-dark-bg px-8 py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold">
+                    Load More Photos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Showcase -->
+    <section class="py-20 px-6 bg-dark-gray">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">Video Highlights</h2>
+                <p class="text-xl text-gray-400">Glimpses of our cinematic wedding films</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="animate-on-scroll">
+                    <div class="relative aspect-video bg-dark-bg rounded-lg overflow-hidden scale-hover cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding video" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-dark-bg text-xl">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-lg font-semibold">Rahul & Sneha</h3>
+                            <p class="text-sm text-gray-300">Mumbai Wedding</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <div class="relative aspect-video bg-dark-bg rounded-lg overflow-hidden scale-hover cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wedding video" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center text-dark-bg text-xl">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="text-lg font-semibold">Arjun & Priya</h3>
+                            <p class="text-sm text-gray-300">Goa Wedding</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 bg-gradient-to-r from-gold to-yellow-600">
+        <div class="container mx-auto text-center animate-on-scroll">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-dark-bg mb-6">Love What You See?</h2>
+            <p class="text-xl text-dark-bg mb-8 opacity-80">Let's create beautiful memories for your special day</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-dark-bg text-gold px-8 py-4 rounded-full hover:bg-dark-gray transition-all duration-300 font-semibold text-lg">
+                    Book Your Date
+                </a>
+                <a href="services.html" class="border-2 border-dark-bg text-dark-bg px-8 py-4 rounded-full hover:bg-dark-bg hover:text-gold transition-all duration-300 font-semibold text-lg">
+                    View Packages
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Gallery image">
+        <button class="absolute top-4 right-4 text-white text-3xl hover:text-gold transition-colors" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark-gray border-t border-gray-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-serif font-bold text-gold mb-4">Shubhmilanfilms</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Crafting visual stories of love, emotion, and timeless moments. Every frame tells a story. Every story lasts forever.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-gold transition-colors">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-gold transition-colors">Services</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 hover:text-gold transition-colors">Portfolio</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-gold transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Get In Touch</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-gold"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-gold"></i>
+                            <span>hello@shubhmilanfilms.com</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-3 text-gold mt-1"></i>
+                            <span>Mumbai, Maharashtra, India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Shubhmilanfilms. All rights reserved. | Crafted with ❤️ for timeless memories</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Gallery filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Lightbox functionality
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Load more functionality (placeholder)
+        document.getElementById('load-more').addEventListener('click', function() {
+            // This would typically load more images from a server
+            alert('More photos would be loaded here!');
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

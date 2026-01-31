@@ -1,0 +1,1712 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Shubhmilanfilms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "dark-bg": "#0a0a0a",
+              gold: "#d4af37",
+              "dark-gray": "#1a1a1a",
+            },
+            fontFamily: {
+              serif: ["Playfair Display", "serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
+      .fade-in {
+        animation: fadeIn 0.8s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide-in {
+        animation: slideIn 0.6s ease-out;
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      .scale-hover {
+        transition: transform 0.3s ease;
+      }
+      .scale-hover:hover {
+        transform: scale(1.05);
+      }
+
+      .navbar-blur {
+        backdrop-filter: blur(10px);
+        background: rgba(10, 10, 10, 0.9);
+      }
+
+      .hero-bg {
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        transition: background-image 0.8s ease-in-out;
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      .hero-slide::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+      }
+
+      .slider-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(212, 175, 55, 0.8);
+        border: none;
+        color: #0a0a0a;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+
+      .slider-nav:hover {
+        background: #d4af37;
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .slider-prev {
+        left: 20px;
+      }
+
+      .slider-next {
+        right: 20px;
+      }
+
+      .masonry-grid {
+        column-count: 3;
+        column-gap: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .masonry-grid {
+          column-count: 1;
+        }
+      }
+
+      @media (max-width: 1024px) and (min-width: 769px) {
+        .masonry-grid {
+          column-count: 2;
+        }
+      }
+
+      .masonry-item {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+      }
+
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .lightbox.active {
+        display: flex;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-white font-sans">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 navbar-blur border-b border-gray-800 transition-all duration-300"
+    >
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="text-2xl font-serif font-bold text-gold">
+            <a href="index.html" class="hover:text-white transition-colors"
+              >Shubhmilanfilms</a
+            >
+          </div>
+
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="index.html"
+              class="hover:text-gold transition-colors text-gold"
+              >Home</a
+            >
+            <a href="about.html" class="hover:text-gold transition-colors"
+              >About</a
+            >
+            <a href="services.html" class="hover:text-gold transition-colors"
+              >Services</a
+            >
+            <a href="gallery.html" class="hover:text-gold transition-colors"
+              >Gallery</a
+            >
+            <a href="contact.html" class="hover:text-gold transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <div class="hidden md:block">
+            <a
+              href="contact.html"
+              class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium"
+            >
+              Book Now
+            </a>
+          </div>
+
+          <button class="md:hidden text-white" id="mobile-menu-btn">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+
+        <div class="md:hidden mt-4 pb-4 hidden" id="mobile-menu">
+          <div class="flex flex-col space-y-4">
+            <a
+              href="index.html"
+              class="hover:text-gold transition-colors text-gold"
+              >Home</a
+            >
+            <a href="about.html" class="hover:text-gold transition-colors"
+              >About</a
+            >
+            <a href="services.html" class="hover:text-gold transition-colors"
+              >Services</a
+            >
+            <a href="gallery.html" class="hover:text-gold transition-colors"
+              >Gallery</a
+            >
+            <a href="contact.html" class="hover:text-gold transition-colors"
+              >Contact</a
+            >
+            <a
+              href="contact.html"
+              class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium inline-block text-center mt-4"
+            >
+              Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="hero-bg min-h-screen flex items-center justify-center relative w-full z-0"
+      class="hero-bg min-h-screen flex items-center justify-center relative w-full z-0 pb-20"
+    >
+      <!-- Hero Slider -->
+      <div class="hero-slider">
+        <div
+          class="hero-slide active"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80&quot;);
+          "
+        ></div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80&quot;);
+          "
+        ></div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80&quot;);
+          "
+        ></div>
+        <div
+          class="hero-slide"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80&quot;);
+          "
+        ></div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button class="slider-nav slider-prev" onclick="changeSlide(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="slider-nav slider-next" onclick="changeSlide(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="text-center px-6 animate-on-scroll relative z-10">
+        <h1
+          class="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight"
+        >
+          Every Frame<br />
+          <span class="text-gold">Tells a Story</span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
+          Crafting cinematic wedding films and timeless photography that
+          captures the essence of your love story
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="gallery.html"
+            class="bg-gold text-dark-bg px-8 py-4 rounded-full hover:bg-white transition-all duration-300 font-semibold text-lg"
+          >
+            View Our Work
+          </a>
+          <a
+            href="contact.html"
+            class="border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-dark-bg transition-all duration-300 font-semibold text-lg"
+          >
+            Book Consultation
+          </a>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+      >
+        <i class="fas fa-chevron-down text-2xl text-gold"></i>
+      </div>
+    </section>
+
+    <!-- Featured Moments -->
+    <section class="py-20 px-6">
+      <div class="container mx-auto">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+            Featured Moments
+          </h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            A glimpse into the beautiful stories we've had the privilege to
+            capture
+          </p>
+        </div>
+
+        <div class="masonry-grid animate-on-scroll">
+          <div
+            class="masonry-item scale-hover cursor-pointer"
+            onclick="
+              openLightbox(
+                'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+              )
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Wedding moment"
+              class="w-full rounded-lg"
+            />
+          </div>
+          <div
+            class="masonry-item scale-hover cursor-pointer"
+            onclick="
+              openLightbox(
+                'https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+              )
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Couple portrait"
+              class="w-full rounded-lg"
+            />
+          </div>
+          <div
+            class="masonry-item scale-hover cursor-pointer"
+            onclick="
+              openLightbox(
+                'https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+              )
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Wedding ceremony"
+              class="w-full rounded-lg"
+            />
+          </div>
+          <div
+            class="masonry-item scale-hover cursor-pointer"
+            onclick="
+              openLightbox(
+                'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+              )
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Reception"
+              class="w-full rounded-lg"
+            />
+          </div>
+          <div
+            class="masonry-item scale-hover cursor-pointer"
+            onclick="
+              openLightbox(
+                'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+              )
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Bridal portrait"
+              class="w-full rounded-lg"
+            />
+          </div>
+          <div
+            class="masonry-item scale-hover cursor-pointer"
+            onclick="
+              openLightbox(
+                'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+              )
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Wedding details"
+              class="w-full rounded-lg"
+            />
+          </div>
+          <div
+            class="masonry-item scale-hover cursor-pointer"
+            onclick="
+              openLightbox(
+                'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+              )
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Couple moments"
+              class="w-full rounded-lg"
+            />
+          </div>
+          <div
+            class="masonry-item scale-hover cursor-pointer"
+            onclick="
+              openLightbox(
+                'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+              )
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Wedding celebration"
+              class="w-full rounded-lg"
+            />
+          </div>
+          <div
+            class="masonry-item scale-hover cursor-pointer"
+            onclick="
+              openLightbox(
+                'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+              )
+            "
+          >
+            <img
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Wedding moment"
+              class="w-full rounded-lg"
+            />
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="gallery.html"
+            class="bg-gold text-dark-bg px-8 py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold"
+          >
+            View Full Gallery
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Story -->
+    <section class="bg-black py-20 px-4">
+      <div class="container mx-auto">
+        <!-- Premium Content Box -->
+        <div
+          class="max-w-3xl mx-auto text-center rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-yellow-500/20 px-8 py-12 shadow-[0_20px_80px_rgba(255,215,0,0.06)] animate-fade-up"
+        >
+          <!-- Title -->
+          <h2
+            class="text-3xl md:text-4xl font-serif font-medium tracking-widest uppercase bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 bg-clip-text text-transparent mb-4"
+          >
+            Our Story
+          </h2>
+
+          <!-- Micro Divider -->
+          <div class="flex justify-center mb-6">
+            <span
+              class="w-14 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"
+            ></span>
+          </div>
+
+          <!-- Content -->
+          <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
+            Every love story is unique. We focus on emotions, details, and
+            timeless moments crafted with
+            <span class="text-yellow-300"> authenticity and soul</span>.
+          </p>
+
+          <p class="text-sm md:text-base text-gray-400 italic">
+            Frames that feel. Stories that last.
+          </p>
+        </div>
+
+        <!-- 🔥 Modern Golden Divider AFTER the Box -->
+        <div class="mt-14 flex flex-col items-center">
+          <!-- Floating Dot -->
+          <span
+            class="w-2 h-2 rounded-full bg-yellow-400 mb-4 animate-pulse"
+          ></span>
+
+          <!-- Elegant Line -->
+          <span
+            class="w-40 h-px bg-gradient-to-r from-transparent via-yellow-400/80 to-transparent"
+          ></span>
+
+          <!-- Subtle Glow -->
+          <span class="w-56 h-[2px] bg-yellow-400/10 blur-xl mt-1"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services - Horizontal Scrolling -->
+    <section class="py-20 px-6 relative overflow-hidden">
+      <style>
+        .services-scroll-container {
+          scroll-behavior: smooth;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .services-scroll-container::-webkit-scrollbar {
+          display: none;
+        }
+
+        .service-card {
+          scroll-snap-align: start;
+          scroll-snap-stop: always;
+          flex-shrink: 0;
+          width: 100%;
+          animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .service-card:nth-child(1) {
+          animation-delay: 0s;
+        }
+        .service-card:nth-child(2) {
+          animation-delay: 0.1s;
+        }
+        .service-card:nth-child(3) {
+          animation-delay: 0.2s;
+        }
+        .service-card:nth-child(4) {
+          animation-delay: 0.3s;
+        }
+        .service-card:nth-child(5) {
+          animation-delay: 0.4s;
+        }
+        .service-card:nth-child(6) {
+          animation-delay: 0.5s;
+        }
+        .service-card:nth-child(7) {
+          animation-delay: 0.6s;
+        }
+        .service-card:nth-child(8) {
+          animation-delay: 0.7s;
+        }
+
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .service-icon {
+          font-size: 3rem;
+          background: linear-gradient(135deg, #d4af37, #f0e68c);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+          transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card {
+          position: relative;
+          overflow: hidden;
+          border-radius: 16px;
+          transition: all 0.3s ease;
+        }
+
+        .service-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.1),
+            transparent
+          );
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+
+        .service-card:hover::before {
+          opacity: 1;
+        }
+
+        .service-card:hover {
+          border-color: #d4af37;
+          box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
+          transform: translateY(-8px);
+        }
+
+        .scroll-hint {
+          position: absolute;
+          right: 20px;
+          bottom: 10px;
+          font-size: 12px;
+          color: #d4af37;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+          0%,
+          100% {
+            opacity: 0.6;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .services-scroll-container {
+            display: flex;
+            gap: 2rem;
+            padding-bottom: 1rem;
+          }
+
+          .service-card {
+            width: calc(33.333% - 1.5rem);
+            min-width: 350px;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .services-scroll-container {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+          }
+
+          .service-card {
+            width: calc(90vw - 48px);
+            min-width: 280px;
+          }
+
+          .scroll-hint {
+            display: none;
+          }
+        }
+      </style>
+
+      <div class="container mx-auto">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+            Signature Services
+          </h2>
+          <p class="text-xl text-gray-400 mb-4">
+            Crafting your perfect wedding experience
+          </p>
+          <p class="text-sm text-gray-500 md:block hidden">
+            Scroll horizontally to explore all our services →
+          </p>
+        </div>
+
+        <!-- Horizontal Scroll Container -->
+        <div
+          class="services-scroll-container overflow-x-auto animate-on-scroll"
+          id="servicesContainer"
+        >
+          <!-- Wedding Photography -->
+          <div
+            class="service-card bg-gradient-to-br from-dark-gray to-black border border-gray-700 p-8"
+          >
+            <div class="text-gold text-5xl mb-6 inline-block">
+              <i class="fas fa-camera service-icon"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">
+              Wedding Photography
+            </h3>
+            <p class="text-gray-400 mb-2 text-sm md:text-base leading-relaxed">
+              Capturing every precious moment with artistic precision and
+              emotional depth. High-resolution images that tell your unique
+              story.
+            </p>
+            <ul class="text-gray-500 text-sm space-y-1 mb-6">
+              <li>✓ Full Day Coverage</li>
+              <li>✓ Pre-Wedding Portraits</li>
+              <li>✓ Professional Editing</li>
+            </ul>
+            <a
+              href="services.html"
+              class="inline-block text-gold hover:text-white transition-all duration-300 font-semibold group"
+            >
+              Learn More
+              <span
+                class="group-hover:translate-x-2 inline-block transition-transform"
+                >→</span
+              >
+            </a>
+          </div>
+
+          <!-- Cinematic Films -->
+          <div
+            class="service-card bg-gradient-to-br from-dark-gray to-black border border-gray-700 p-8"
+          >
+            <div class="text-gold text-5xl mb-6 inline-block">
+              <i class="fas fa-video service-icon"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">
+              Cinematic Films
+            </h3>
+            <p class="text-gray-400 mb-2 text-sm md:text-base leading-relaxed">
+              Creating movie-like wedding films with cinematic color grading and
+              professional sound design that tell your love story.
+            </p>
+            <ul class="text-gray-500 text-sm space-y-1 mb-6">
+              <li>✓ 4K Ultra HD Quality</li>
+              <li>✓ Professional Editing</li>
+              <li>✓ Custom Music & SFX</li>
+            </ul>
+            <a
+              href="services.html"
+              class="inline-block text-gold hover:text-white transition-all duration-300 font-semibold group"
+            >
+              Learn More
+              <span
+                class="group-hover:translate-x-2 inline-block transition-transform"
+                >→</span
+              >
+            </a>
+          </div>
+
+          <!-- Pre-Wedding Shoots -->
+          <div
+            class="service-card bg-gradient-to-br from-dark-gray to-black border border-gray-700 p-8"
+          >
+            <div class="text-gold text-5xl mb-6 inline-block">
+              <i class="fas fa-heart service-icon"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">
+              Pre-Wedding Shoots
+            </h3>
+            <p class="text-gray-400 mb-2 text-sm md:text-base leading-relaxed">
+              Romantic sessions that capture your chemistry and connection in
+              stunning locations with personalized styling.
+            </p>
+            <ul class="text-gray-500 text-sm space-y-1 mb-6">
+              <li>✓ Multiple Locations</li>
+              <li>✓ Outfit Changes</li>
+              <li>✓ Beautiful Edits</li>
+            </ul>
+            <a
+              href="services.html"
+              class="inline-block text-gold hover:text-white transition-all duration-300 font-semibold group"
+            >
+              Learn More
+              <span
+                class="group-hover:translate-x-2 inline-block transition-transform"
+                >→</span
+              >
+            </a>
+          </div>
+
+          <!-- Drone & Aerial Shots -->
+          <div
+            class="service-card bg-gradient-to-br from-dark-gray to-black border border-gray-700 p-8"
+          >
+            <div class="text-gold text-5xl mb-6 inline-block">
+              <i class="fas fa-drone service-icon"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">
+              Drone & Aerial Shots
+            </h3>
+            <p class="text-gray-400 mb-2 text-sm md:text-base leading-relaxed">
+              Stunning aerial perspectives of your venue, ceremonies, and
+              celebrations with professional drone operations.
+            </p>
+            <ul class="text-gray-500 text-sm space-y-1 mb-6">
+              <li>✓ Licensed Drone Pilots</li>
+              <li>✓ Dynamic Footage</li>
+              <li>✓ Cinematic Angles</li>
+            </ul>
+            <a
+              href="services.html"
+              class="inline-block text-gold hover:text-white transition-all duration-300 font-semibold group"
+            >
+              Learn More
+              <span
+                class="group-hover:translate-x-2 inline-block transition-transform"
+                >→</span
+              >
+            </a>
+          </div>
+
+          <!-- Highlight Reels -->
+          <div
+            class="service-card bg-gradient-to-br from-dark-gray to-black border border-gray-700 p-8"
+          >
+            <div class="text-gold text-5xl mb-6 inline-block">
+              <i class="fas fa-film service-icon"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">
+              Highlight Reels
+            </h3>
+            <p class="text-gray-400 mb-2 text-sm md:text-base leading-relaxed">
+              Fast-paced, shareable 3-5 minute highlights perfect for social
+              media with trending music and effects.
+            </p>
+            <ul class="text-gray-500 text-sm space-y-1 mb-6">
+              <li>✓ Social Media Ready</li>
+              <li>✓ Trending Music</li>
+              <li>✓ Quick Turnaround</li>
+            </ul>
+            <a
+              href="services.html"
+              class="inline-block text-gold hover:text-white transition-all duration-300 font-semibold group"
+            >
+              Learn More
+              <span
+                class="group-hover:translate-x-2 inline-block transition-transform"
+                >→</span
+              >
+            </a>
+          </div>
+
+          <!-- Album & Prints -->
+          <div
+            class="service-card bg-gradient-to-br from-dark-gray to-black border border-gray-700 p-8"
+          >
+            <div class="text-gold text-5xl mb-6 inline-block">
+              <i class="fas fa-book service-icon"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">
+              Albums & Prints
+            </h3>
+            <p class="text-gray-400 mb-2 text-sm md:text-base leading-relaxed">
+              Premium coffee table albums, canvas prints, and framed artwork to
+              preserve your memories in timeless style.
+            </p>
+            <ul class="text-gray-500 text-sm space-y-1 mb-6">
+              <li>✓ Custom Designs</li>
+              <li>✓ Premium Quality</li>
+              <li>✓ Multiple Sizes</li>
+            </ul>
+            <a
+              href="services.html"
+              class="inline-block text-gold hover:text-white transition-all duration-300 font-semibold group"
+            >
+              Learn More
+              <span
+                class="group-hover:translate-x-2 inline-block transition-transform"
+                >→</span
+              >
+            </a>
+          </div>
+
+          <!-- Destination Photography -->
+          <div
+            class="service-card bg-gradient-to-br from-dark-gray to-black border border-gray-700 p-8"
+          >
+            <div class="text-gold text-5xl mb-6 inline-block">
+              <i class="fas fa-plane service-icon"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">
+              Destination Photography
+            </h3>
+            <p class="text-gray-400 mb-2 text-sm md:text-base leading-relaxed">
+              Capture your destination wedding with cinematic imagery in
+              stunning global locations.
+            </p>
+            <ul class="text-gray-500 text-sm space-y-1 mb-6">
+              <li>✓ Travel & Logistics</li>
+              <li>✓ Local Scouting</li>
+              <li>✓ Fine-art Edits</li>
+            </ul>
+            <a
+              href="services.html"
+              class="inline-block text-gold hover:text-white transition-all duration-300 font-semibold group"
+            >
+              Learn More
+              <span
+                class="group-hover:translate-x-2 inline-block transition-transform"
+                >→</span
+              >
+            </a>
+          </div>
+
+          <!-- Commercial & Editorial Photography -->
+          <div
+            class="service-card bg-gradient-to-br from-dark-gray to-black border border-gray-700 p-8"
+          >
+            <div class="text-gold text-5xl mb-6 inline-block">
+              <i class="fas fa-briefcase service-icon"></i>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold mb-4">
+              Commercial & Editorial
+            </h3>
+            <p class="text-gray-400 mb-2 text-sm md:text-base leading-relaxed">
+              Professional photography for brands, editorials, and commercial
+              campaigns.
+            </p>
+            <ul class="text-gray-500 text-sm space-y-1 mb-6">
+              <li>✓ Studio & On-location</li>
+              <li>✓ Creative Direction</li>
+              <li>✓ Licensing & Deliverables</li>
+            </ul>
+            <a
+              href="services.html"
+              class="inline-block text-gold hover:text-white transition-all duration-300 font-semibold group"
+            >
+              Learn More
+              <span
+                class="group-hover:translate-x-2 inline-block transition-transform"
+                >→</span
+              >
+            </a>
+          </div>
+
+          <span class="scroll-hint hidden md:flex">Scroll right →</span>
+        </div>
+
+        <!-- Scroll Navigation Indicator (visible on mobile & desktop) -->
+        <div class="flex justify-center gap-2 mt-8 relative">
+          <button
+            onclick="scrollServices(-1)"
+            aria-label="Previous services"
+            class="flex items-center justify-center w-10 h-10 rounded-full bg-dark-gray border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all duration-300 z-50 absolute left-4 top-1/2 -translate-y-1/2 md:static md:translate-y-0 md:left-auto"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button
+            onclick="scrollServices(1)"
+            aria-label="Next services"
+            class="flex items-center justify-center w-10 h-10 rounded-full bg-dark-gray border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all duration-300 z-50 absolute right-4 top-1/2 -translate-y-1/2 md:static md:translate-y-0 md:right-auto"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-6 bg-dark-gray">
+      <div class="container mx-auto">
+        <div class="text-center mb-16 animate-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+            What Couples Say
+          </h2>
+          <p class="text-xl text-gray-400">
+            Testimonials from our beautiful couples
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 animate-on-scroll">
+          <div class="bg-dark-bg p-8 rounded-lg">
+            <div class="flex items-center mb-4">
+              <div class="text-gold text-2xl mr-2">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <div class="flex text-gold">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              "Shubhmilanfilms captured our wedding day perfectly. Every
+              emotion, every moment was beautifully preserved. We couldn't be
+              happier with the results!"
+            </p>
+            <div class="flex items-center">
+              <div
+                class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg font-bold mr-4"
+              >
+                R&S
+              </div>
+              <div>
+                <h4 class="font-semibold">Rahul & Sneha</h4>
+                <p class="text-gray-400 text-sm">Mumbai Wedding</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-dark-bg p-8 rounded-lg">
+            <div class="flex items-center mb-4">
+              <div class="text-gold text-2xl mr-2">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <div class="flex text-gold">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+            <p class="text-gray-300 mb-6 leading-relaxed">
+              "The team's professionalism and creativity exceeded our
+              expectations. Our wedding film feels like a beautiful movie of our
+              love story."
+            </p>
+            <div class="flex items-center">
+              <div
+                class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg font-bold mr-4"
+              >
+                A&P
+              </div>
+              <div>
+                <h4 class="font-semibold">Arjun & Priya</h4>
+                <p class="text-gray-400 text-sm">Goa Wedding</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Showcase (6 YouTube videos) -->
+    <section class="py-20 px-6">
+      <style>
+        .video-grid {
+          display: grid;
+          gap: 1rem;
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        .video-card {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          cursor: pointer;
+          background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.02),
+            rgba(0, 0, 0, 0.15)
+          );
+          border: 1px solid rgba(255, 255, 255, 0.03);
+          transition:
+            transform 0.28s ease,
+            box-shadow 0.28s ease;
+        }
+        .video-card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+        .video-thumb {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          display: block;
+        }
+        .video-meta {
+          padding: 1rem;
+        }
+        .video-title {
+          font-weight: 600;
+          color: #fff;
+          margin-bottom: 0.25rem;
+        }
+        .video-sub {
+          color: #c9c9c9;
+          font-size: 0.92rem;
+        }
+        .play-overlay {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          pointer-events: none;
+        }
+        .play-btn {
+          pointer-events: auto;
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #d4af37, #f0e68c);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0a0a0a;
+          font-size: 1.25rem;
+          box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
+          transition: transform 0.25s ease;
+        }
+        .video-card:hover .play-btn {
+          transform: scale(1.06);
+        }
+
+        @media (min-width: 640px) {
+          .video-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+        @media (min-width: 1024px) {
+          .video-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+          .video-thumb {
+            height: 160px;
+          }
+        }
+
+        /* Video modal */
+        .video-modal {
+          display: none;
+          position: fixed;
+          inset: 0;
+          z-index: 1200;
+          align-items: center;
+          justify-content: center;
+          background: rgba(0, 0, 0, 0.8);
+        }
+        .video-modal.active {
+          display: flex;
+        }
+        .video-modal .inner {
+          width: 94%;
+          max-width: 1100px;
+          aspect-ratio: 16/9;
+          background: #000;
+          border-radius: 12px;
+          overflow: hidden;
+          position: relative;
+        }
+        .video-modal .close {
+          position: absolute;
+          right: 12px;
+          top: 12px;
+          z-index: 10;
+          background: transparent;
+          border: 0;
+          color: #fff;
+          font-size: 28px;
+        }
+      </style>
+
+      <div class="container mx-auto text-center animate-on-scroll">
+        <h2 class="text-4xl md:text-5xl font-serif font-bold mb-3">
+          Cinematic Showreel
+        </h2>
+
+        <!-- Premium Golden Divider -->
+        <div class="flex flex-col items-center mb-6">
+          <span class="w-2 h-2 rounded-full bg-[#d4af37] mb-3"></span>
+          <span
+            class="w-32 h-px bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"
+          ></span>
+          <span class="w-44 h-[2px] bg-[#d4af37]/20 blur-lg mt-1"></span>
+        </div>
+
+        <p class="text-xl text-gray-400 mb-8">
+          Experience the magic of our storytelling — click any reel to watch.
+        </p>
+
+        <div class="video-grid" id="videoGrid">
+          <!-- Cards: replace VIDEO_ID_x with real YouTube IDs -->
+          <div
+            class="video-card"
+            data-video-id="M7lc1UVf-VE"
+            onclick="openVideo(this)"
+          >
+            <img
+              class="video-thumb"
+              src="https://img.youtube.com/vi/M7lc1UVf-VE/hqdefault.jpg"
+              alt="Showreel 1"
+              loading="lazy"
+            />
+            <div class="play-overlay">
+              <div class="play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="video-meta">
+              <div class="video-title">Cinematic Teaser 1</div>
+              <div class="video-sub">Short showreel · 2:34</div>
+            </div>
+          </div>
+
+          <div
+            class="video-card"
+            data-video-id="kXYiU_JCYtU"
+            onclick="openVideo(this)"
+          >
+            <img
+              class="video-thumb"
+              src="https://img.youtube.com/vi/kXYiU_JCYtU/hqdefault.jpg"
+              alt="Showreel 2"
+              loading="lazy"
+            />
+            <div class="play-overlay">
+              <div class="play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="video-meta">
+              <div class="video-title">Cinematic Teaser 2</div>
+              <div class="video-sub">Emotive highlights · 3:12</div>
+            </div>
+          </div>
+
+          <div
+            class="video-card"
+            data-video-id="3JZ_D3ELwOQ"
+            onclick="openVideo(this)"
+          >
+            <img
+              class="video-thumb"
+              src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg"
+              alt="Showreel 3"
+              loading="lazy"
+            />
+            <div class="play-overlay">
+              <div class="play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="video-meta">
+              <div class="video-title">Cinematic Teaser 3</div>
+              <div class="video-sub">Romantic moments · 4:05</div>
+            </div>
+          </div>
+
+          <div
+            class="video-card"
+            data-video-id="C0DPdy98e4c"
+            onclick="openVideo(this)"
+          >
+            <img
+              class="video-thumb"
+              src="https://img.youtube.com/vi/C0DPdy98e4c/hqdefault.jpg"
+              alt="Showreel 4"
+              loading="lazy"
+            />
+            <div class="play-overlay">
+              <div class="play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="video-meta">
+              <div class="video-title">Cinematic Teaser 4</div>
+              <div class="video-sub">Venue & details · 2:47</div>
+            </div>
+          </div>
+
+          <div
+            class="video-card"
+            data-video-id="e-ORhEE9VVg"
+            onclick="openVideo(this)"
+          >
+            <img
+              class="video-thumb"
+              src="https://img.youtube.com/vi/e-ORhEE9VVg/hqdefault.jpg"
+              alt="Showreel 5"
+              loading="lazy"
+            />
+            <div class="play-overlay">
+              <div class="play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="video-meta">
+              <div class="video-title">Cinematic Teaser 5</div>
+              <div class="video-sub">Emotional edit · 3:50</div>
+            </div>
+          </div>
+
+          <div
+            class="video-card"
+            data-video-id="VYOjWnS4cMY"
+            onclick="openVideo(this)"
+          >
+            <img
+              class="video-thumb"
+              src="https://img.youtube.com/vi/VYOjWnS4cMY/hqdefault.jpg"
+              alt="Showreel 6"
+              loading="lazy"
+            />
+            <div class="play-overlay">
+              <div class="play-btn"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="video-meta">
+              <div class="video-title">Cinematic Teaser 6</div>
+              <div class="video-sub">Highlights reel · 2:58</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-8">
+          <a
+            href="gallery.html"
+            class="bg-gold text-dark-bg px-8 py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold"
+            >View Full Gallery</a
+          >
+        </div>
+      </div>
+
+      <!-- Video Modal -->
+      <div id="videoModal" class="video-modal" onclick="closeVideo(event)">
+        <div class="inner" role="dialog" aria-modal="true">
+          <button
+            class="close"
+            aria-label="Close video"
+            onclick="closeVideo(event)"
+          >
+            &times;
+          </button>
+          <iframe
+            id="videoIframe"
+            width="100%"
+            height="100%"
+            src=""
+            frameborder="0"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <script>
+        function openVideo(card) {
+          const id =
+            typeof card === "string"
+              ? card
+              : card.getAttribute("data-video-id");
+          const modal = document.getElementById("videoModal");
+          const iframe = document.getElementById("videoIframe");
+          iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeVideo(e) {
+          // prevent closing when clicking inside iframe
+          if (e && e.target && e.target.tagName === "IFRAME") return;
+          const modal = document.getElementById("videoModal");
+          const iframe = document.getElementById("videoIframe");
+          iframe.src = "";
+          modal.classList.remove("active");
+          document.body.style.overflow = "auto";
+          if (e) e.stopPropagation();
+        }
+      </script>
+    </section>
+
+    <!-- Final CTA -->
+    <section
+      class="relative py-20 px-6 bg-cover bg-center bg-no-repeat"
+      style="
+        background-image:
+          linear-gradient(rgba(212, 175, 55, 0.35), rgba(0, 0, 0, 0.75)),
+          url(https://images.unsplash.com/photo-1606216794074-735e91aa2c92);
+      "
+    >
+      <div class="container mx-auto text-center animate-on-scroll">
+        <h2 class="text-4xl md:text-5xl font-serif font-bold text-gold mb-6">
+          Ready to Tell Your Story?
+        </h2>
+
+        <p class="text-xl text-gold/80 mb-8">
+          Let’s create something beautiful together
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="contact.html"
+            class="bg-black text-gold px-8 py-4 rounded-full hover:bg-dark-gray transition-all duration-300 font-semibold text-lg"
+          >
+            Book Consultation
+          </a>
+
+          <a
+            href="https://wa.me/919960876119"
+            class="border-2 border-gold text-gold px-8 py-4 rounded-full hover:bg-black hover:text-gold transition-all duration-300 font-semibold text-lg"
+          >
+            <i class="fab fa-whatsapp mr-2"></i> WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer - Modern -->
+    <footer
+      class="bg-[linear-gradient(180deg,#070707,rgba(10,10,10,0.96))] border-t border-gray-800 mt-20"
+    >
+      <div class="container mx-auto px-6 py-14">
+        <div class="grid lg:grid-cols-12 gap-8 items-start">
+          <!-- Brand + CTA -->
+          <div class="lg:col-span-4">
+            <div class="flex items-center mb-4">
+              <div class="text-3xl font-serif font-bold text-gold mr-3">
+                Shubhmilanfilms
+              </div>
+              <span class="text-sm text-gray-400"
+                >Cinematic Wedding Films & Photography</span
+              >
+            </div>
+            <p class="text-gray-400 mb-6 leading-relaxed">
+              We craft emotive films and timeless imagery that feel personal,
+              cinematic, and true to you.
+            </p>
+            <div class="flex gap-3 mb-6">
+              <a
+                href="contact.html"
+                class="bg-gold text-dark-bg px-4 py-2 rounded-full font-semibold hover:bg-white transition"
+                >Book Now</a
+              >
+              <a
+                href="gallery.html"
+                class="border border-gray-700 px-4 py-2 rounded-full text-gray-200 hover:bg-gray-800 transition"
+                >View Portfolio</a
+              >
+            </div>
+            <div class="flex items-center space-x-4">
+              <a
+                href="#"
+                class="social-icon text-gold text-xl hover:scale-110 transition transform"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="social-icon text-gold text-xl hover:scale-110 transition transform"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a
+                href="#"
+                class="social-icon text-gold text-xl hover:scale-110 transition transform"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                href="#"
+                class="social-icon text-gold text-xl hover:scale-110 transition transform"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Services quick list -->
+          <div class="lg:col-span-3">
+            <h4 class="text-lg font-semibold mb-4">Photography Services</h4>
+            <ul class="space-y-2 text-gray-300">
+              <li>Wedding Photography</li>
+              <li>Pre-Wedding Shoots</li>
+              <li>Destination Photography</li>
+              <li>Commercial & Editorial</li>
+              <li>Albums & Prints</li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="lg:col-span-3">
+            <h4 class="text-lg font-semibold mb-4">Stay Updated</h4>
+            <p class="text-gray-400 mb-4">
+              Get our latest showreels and seasonal offers. No spam.
+            </p>
+            <form id="newsletterFormFooter" class="flex gap-2">
+              <input
+                type="email"
+                name="email"
+                placeholder="Your email"
+                required
+                class="w-full px-3 py-2 rounded-md bg-transparent border border-gray-700 text-gray-200 focus:border-gold outline-none"
+              />
+              <button
+                class="bg-gold text-dark-bg px-4 rounded-md font-semibold"
+              >
+                Join
+              </button>
+            </form>
+            <p
+              id="newsletterMsgFooter"
+              class="text-sm text-green-400 mt-3 hidden"
+            ></p>
+          </div>
+
+          <!-- Contact / Hours -->
+          <div class="lg:col-span-2">
+            <h4 class="text-lg font-semibold mb-4">Contact</h4>
+            <div class="text-gray-300 space-y-2">
+              <div class="flex items-center">
+                <i class="fas fa-phone mr-3 text-gold"></i
+                ><span>+91 98765 43210</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-gold"></i
+                ><span>hello@shubhmilanfilms.com</span>
+              </div>
+              <div class="flex items-start">
+                <i class="fas fa-map-marker-alt mr-3 text-gold mt-1"></i
+                ><span>Mumbai, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+        >
+          <p class="text-sm">
+            &copy; 2024 Shubhmilanfilms. All rights reserved.
+          </p>
+          <p class="text-sm">
+            Designed &amp; Crafted with <span class="text-red-400">❤</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Footer newsletter UX
+      const newsletterFormFooter = document.getElementById(
+        "newsletterFormFooter",
+      );
+      if (newsletterFormFooter) {
+        newsletterFormFooter.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const msg = document.getElementById("newsletterMsgFooter");
+          msg.textContent = "Thanks — you are subscribed!";
+          msg.classList.remove("hidden");
+          setTimeout(() => msg.classList.add("hidden"), 4000);
+          newsletterFormFooter.reset();
+        });
+      }
+    </script>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <img id="lightbox-img" src="" alt="Gallery image" />
+      <button
+        class="absolute top-4 right-4 text-white text-3xl hover:text-gold transition-colors"
+        onclick="closeLightbox()"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+          }
+        });
+      }, observerOptions);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+          observer.observe(el);
+        });
+      });
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector("nav");
+        if (window.scrollY > 100) {
+          navbar.classList.add("shadow-lg");
+        } else {
+          navbar.classList.remove("shadow-lg");
+        }
+      });
+
+      // Lightbox functionality
+      function openLightbox(imageSrc) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.src = imageSrc;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById("lightbox");
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // Close lightbox with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeLightbox();
+        }
+      });
+
+      // Hero Slider
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".hero-slide");
+      const totalSlides = slides.length;
+
+      function changeSlide(direction) {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add("active");
+      }
+
+      // Auto-play slider
+      setInterval(() => {
+        changeSlide(1);
+      }, 5000);
+
+      // Services Horizontal Scroll
+      function scrollServices(direction) {
+        const container = document.getElementById("servicesContainer");
+        const scrollAmount = 400; // Scroll distance per click
+        const targetScroll = container.scrollLeft + direction * scrollAmount;
+
+        container.scrollTo({
+          left: targetScroll,
+          behavior: "smooth",
+        });
+      }
+
+      // Smart scroll: Global wheel handler that switches to horizontal when Services is visible
+      const servicesContainer = document.getElementById("servicesContainer");
+      if (servicesContainer) {
+        let isAtEndOfServices = false;
+
+        // Track container scroll position
+        servicesContainer.addEventListener("scroll", () => {
+          const maxScroll =
+            servicesContainer.scrollWidth - servicesContainer.clientWidth;
+          const currentScroll = servicesContainer.scrollLeft;
+          isAtEndOfServices = currentScroll >= maxScroll - 50;
+        });
+
+        // Global wheel listener: when Services section is visible, convert vertical wheel to horizontal scroll
+        document.addEventListener(
+          "wheel",
+          (e) => {
+            if (window.innerWidth < 768) return; // keep native behavior on mobile
+
+            const rect = servicesContainer.getBoundingClientRect();
+            const visible = rect.top < window.innerHeight && rect.bottom > 0; // any part visible
+            if (!visible) return; // only intervene when services section is in view
+
+            const maxScroll =
+              servicesContainer.scrollWidth - servicesContainer.clientWidth;
+            const currentScroll = servicesContainer.scrollLeft;
+            const scrollingDown = e.deltaY > 0;
+            const atEnd = currentScroll >= maxScroll - 50;
+            const atStart = currentScroll <= 50;
+
+            // If scrolling down and at end (or scrolling up and at start), allow normal vertical scroll
+            if ((scrollingDown && atEnd) || (!scrollingDown && atStart)) {
+              return; // allow page to scroll vertically
+            }
+
+            // Otherwise, prevent vertical scroll and perform horizontal scroll on services
+            e.preventDefault();
+
+            // Use delta to compute a smooth step, capped for large deltas
+            const baseStep =
+              Math.sign(e.deltaY) * Math.min(Math.abs(e.deltaY) * 2, 600);
+            servicesContainer.scrollBy({ left: baseStep, behavior: "smooth" });
+          },
+          { passive: false },
+        );
+      }
+    </script>
+  </body>
+</html>
