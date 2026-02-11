@@ -68,12 +68,24 @@
       }
 
       .hero-bg {
-        margin-top: 73px;
+        position: relative;
+        width: 100vw;
+        height: auto;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        overflow: hidden;
+      }
+
+      @media (min-width: 768px) {
+        .hero-bg {
+          height: calc(100vh - 73px);
+        }
       }
 
       .hero-slider {
         position: relative;
         width: 100%;
+        height: 100%;
       }
 
       .hero-slide {
@@ -81,8 +93,19 @@
         top: 0;
         left: 0;
         width: 100%;
+        height: 100%;
+        min-height: 400px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         opacity: 0;
         transition: opacity 0.8s ease-in-out;
+      }
+
+      @media (min-width: 768px) {
+        .hero-slide {
+          min-height: auto;
+        }
       }
 
       .hero-slide:first-child {
@@ -93,30 +116,27 @@
         opacity: 1;
       }
 
-      @media (min-width: 1024px) {
-        .hero-slide {
-          object-fit: cover;
-          height: 60vh;
-        }
-      }
-
       .slider-nav {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(212, 175, 55, 0.8);
-        border: none;
-        color: #0a0a0a;
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        color: white;
         width: 50px;
         height: 50px;
         border-radius: 50%;
         cursor: pointer;
         transition: all 0.3s ease;
         z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .slider-nav:hover {
-        background: #d4af37;
+        background: rgba(255, 255, 255, 0.2);
+        border-color: white;
         transform: translateY(-50%) scale(1.1);
       }
 
@@ -190,7 +210,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.95);
         z-index: 1000;
         justify-content: center;
         align-items: center;
@@ -204,6 +224,60 @@
         max-width: 90%;
         max-height: 90%;
         object-fit: contain;
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        background: rgba(212, 175, 55, 0.9);
+        border: none;
+        color: black;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1001;
+      }
+
+      .lightbox-nav:hover {
+        background: #d4af37;
+        transform: scale(1.1);
+      }
+
+      @media (min-width: 768px) {
+        .lightbox-nav {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .lightbox-nav:hover {
+          transform: translateY(-50%) scale(1.1);
+        }
+      }
+
+      @media (max-width: 767px) {
+        .lightbox-nav {
+          bottom: 80px;
+        }
+      }
+
+      .lightbox-prev {
+        left: 20px;
+      }
+
+      .lightbox-next {
+        right: 20px;
+      }
+
+      .lightbox-counter {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 16px;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 8px 16px;
+        border-radius: 20px;
       }
     </style>
   </head>
@@ -223,7 +297,7 @@
           <div class="hidden md:flex space-x-8">
             <a
               href="index.html"
-              class="hover:text-gold transition-colors text-gold"
+              class="hover:text-gold transition-colors text-white"
               >Home</a
             >
             <a href="about.html" class="hover:text-gold transition-colors"
@@ -258,7 +332,7 @@
           <div class="flex flex-col space-y-4">
             <a
               href="index.html"
-              class="hover:text-gold transition-colors text-gold"
+              class="hover:text-gold transition-colors text-white"
               >Home</a
             >
             <a href="about.html" class="hover:text-gold transition-colors"
@@ -285,27 +359,21 @@
     </nav>
 
     <!-- Hero Section -->
-    <section
-      class="hero-bg relative w-full z-0 overflow-hidden"
-      style="margin-top: 73px"
-    >
+    <section class="hero-bg relative w-full z-0">
       <!-- Hero Slider -->
       <div class="hero-slider relative w-full">
-        <img
-          class="hero-slide active w-full h-auto object-contain"
-          src="assets/images/hero1.webp"
-          alt="Hero 1"
-        />
-        <img
-          class="hero-slide w-full h-auto object-contain"
-          src="assets/images/hero2.webp"
-          alt="Hero 2"
-        />
-        <img
-          class="hero-slide w-full h-auto object-contain"
-          src="assets/images/hero3.webp"
-          alt="Hero 3"
-        />
+        <div
+          class="hero-slide active"
+          style="background-image: url(&quot;assets/images/hero1.webp&quot;)"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;assets/images/hero2.webp&quot;)"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;assets/images/hero3.webp&quot;)"
+        ></div>
       </div>
 
       <!-- Navigation Buttons -->
@@ -315,30 +383,261 @@
       <button class="slider-nav slider-next" onclick="changeSlide(1)">
         <i class="fas fa-chevron-right"></i>
       </button>
+    </section>
 
-      <!-- Floating Scroll Indicator -->
-      <!-- <div class="scroll-indicator">
-        <div class="flex flex-col items-center gap-2">
-          <span class="text-gold text-sm font-light tracking-widest"
-            >SCROLL</span
-          >
-          <div
-            class="w-6 h-10 border-2 border-gold rounded-full flex justify-center pt-2"
-          >
-            <div class="w-1 h-2 bg-gold rounded-full animate-pulse"></div>
+    <!-- Modern Divider -->
+    <div class="py-8 bg-dark-bg flex justify-center relative">
+      <div class="flex items-center gap-3">
+        <!-- Left Line -->
+        <span
+          class="w-12 h-[1px] bg-gradient-to-r from-transparent to-gold/70"
+        ></span>
+
+        <!-- Center Dot (Glass Effect) -->
+        <span
+          class="w-2.5 h-2.5 rounded-full bg-gold/80 backdrop-blur-md shadow-[0_0_8px_rgba(212,175,55,0.6)]"
+        ></span>
+
+        <!-- Right Line -->
+        <span
+          class="w-12 h-[1px] bg-gradient-to-l from-transparent to-gold/70"
+        ></span>
+      </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <section class="py-12 md:py-20 px-2 bg-dark-bg">
+      <style>
+        .stat-number {
+          font-family: "Playfair Display", serif;
+        }
+        .circular-image {
+          aspect-ratio: 1;
+          object-fit: cover;
+        }
+        .stat-animate {
+          opacity: 0;
+          transform: translateY(50px);
+          transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .stat-animate.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .stat-animate:nth-child(1) {
+          transition-delay: 0.1s;
+        }
+        .stat-animate:nth-child(2) {
+          transition-delay: 0.2s;
+        }
+        .stat-animate:nth-child(3) {
+          transition-delay: 0.3s;
+        }
+        .image-animate {
+          opacity: 0;
+          transform: scale(0.8);
+          transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .image-animate.visible {
+          opacity: 1;
+          transform: scale(1);
+        }
+        .image-animate:nth-child(1) {
+          transition-delay: 0.2s;
+        }
+        .image-animate:nth-child(2) {
+          transition-delay: 0.3s;
+        }
+        .image-animate:nth-child(3) {
+          transition-delay: 0.4s;
+        }
+      </style>
+      <div class="w-full max-w-7xl mx-auto">
+        <!-- Mobile Layout -->
+        <div class="md:hidden space-y-8">
+          <!-- Images Row -->
+          <div class="flex items-center justify-center gap-2">
+            <div
+              class="w-24 h-24 rounded-full overflow-hidden shadow-xl image-animate"
+            >
+              <img
+                src="assets/featuredImg/f1.webp"
+                alt="Wedding moment"
+                class="circular-image w-full h-full"
+              />
+            </div>
+            <div
+              class="w-32 h-32 rounded-full overflow-hidden shadow-2xl image-animate"
+            >
+              <img
+                src="assets/featuredImg/f2.webp"
+                alt="Couple portrait"
+                class="circular-image w-full h-full"
+              />
+            </div>
+            <div
+              class="w-24 h-24 rounded-full overflow-hidden shadow-xl image-animate"
+            >
+              <img
+                src="assets/featuredImg/f3.webp"
+                alt="Bridal portrait"
+                class="circular-image w-full h-full"
+              />
+            </div>
+          </div>
+
+          <!-- Stats Row -->
+          <div class="flex justify-around items-center">
+            <div class="flex flex-col items-center text-center stat-animate">
+              <h2
+                class="stat-number text-4xl font-bold text-gold mb-1"
+                data-target="5"
+              >
+                0
+              </h2>
+              <p class="text-gold text-xs font-light tracking-wider uppercase">
+                Years
+              </p>
+            </div>
+            <div class="flex flex-col items-center text-center stat-animate">
+              <h2
+                class="stat-number text-4xl font-bold text-gold mb-1"
+                data-target="500"
+                data-suffix="K+"
+              >
+                0
+              </h2>
+              <p class="text-gold text-xs font-light tracking-wider uppercase">
+                Photos Clicked
+              </p>
+            </div>
+            <div class="flex flex-col items-center text-center stat-animate">
+              <h2
+                class="stat-number text-4xl font-bold text-gold mb-1"
+                data-target="250"
+              >
+                0
+              </h2>
+              <p class="text-gold text-xs font-light tracking-wider uppercase">
+                Clients
+              </p>
+            </div>
           </div>
         </div>
-      </div> -->
+
+        <!-- Desktop Layout -->
+        <div
+          class="hidden md:flex items-center justify-center gap-8 lg:gap-16 flex-wrap lg:flex-nowrap"
+        >
+          <!-- Left Stat: Years of Experience -->
+          <div class="flex flex-col items-center text-center w-48 stat-animate">
+            <h2
+              class="stat-number text-6xl lg:text-7xl font-bold text-gold mb-2"
+              data-target="10"
+            >
+              0
+            </h2>
+            <p
+              class="text-gold text-sm lg:text-base font-light tracking-widest uppercase"
+            >
+              Years of Experience
+            </p>
+          </div>
+
+          <!-- Center Images -->
+          <div class="relative flex items-center justify-center">
+            <!-- Left Circle -->
+            <div
+              class="w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl relative z-10 image-animate"
+            >
+              <img
+                src="assets/featuredImg/f1.webp"
+                alt="Wedding moment"
+                class="circular-image w-full h-full"
+              />
+            </div>
+
+            <!-- Center Circle (Overlapping) -->
+            <div
+              class="w-56 h-56 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl relative z-20 -ml-12 -mr-12 lg:-ml-16 lg:-mr-16 image-animate"
+            >
+              <img
+                src="assets/featuredImg/f2.webp"
+                alt="Couple portrait"
+                class="circular-image w-full h-full"
+              />
+            </div>
+
+            <!-- Right Circle -->
+            <div
+              class="w-48 h-48 lg:w-64 lg:h-64 rounded-full overflow-hidden shadow-2xl relative z-10 image-animate"
+            >
+              <img
+                src="assets/featuredImg/f3.webp"
+                alt="Bridal portrait"
+                class="circular-image w-full h-full"
+              />
+            </div>
+          </div>
+
+          <!-- Right Stat: Photos Clicked -->
+          <div class="flex flex-col items-center text-center w-48">
+            <h2
+              class="stat-number text-6xl lg:text-7xl font-bold text-gold mb-2"
+              data-target="500"
+              data-suffix="K+"
+            >
+              0
+            </h2>
+            <p
+              class="text-gold text-sm lg:text-base font-light tracking-widest uppercase"
+            >
+              Photos Clicked
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom Stat: Happy Clients (Desktop) -->
+        <div class="hidden md:flex justify-center mt-12">
+          <div class="flex flex-col items-center text-center w-48">
+            <h2
+              class="stat-number text-6xl lg:text-7xl font-bold text-gold mb-2"
+              data-target="1251"
+            >
+              0
+            </h2>
+            <p
+              class="text-gold text-sm lg:text-base font-light tracking-widest uppercase"
+            >
+              Happy Clients
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Featured Moments -->
-    <section class="py-20 px-6">
+    <section class="py-12 md:py-20 px-4 md:px-6">
       <div class="container mx-auto">
-        <div class="text-center mb-16 animate-on-scroll">
-          <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+        <div class="text-center mb-12 md:mb-20 animate-on-scroll">
+          <!-- Small Accent Line -->
+          <div class="flex justify-center mb-4">
+            <span
+              class="w-10 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent"
+            ></span>
+          </div>
+
+          <!-- Title -->
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4 tracking-wide bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent"
+          >
             Featured Moments
           </h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+
+          <!-- Subtitle -->
+          <p
+            class="text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4 leading-relaxed"
+          >
             A glimpse into the beautiful stories we've had the privilege to
             capture
           </p>
@@ -348,7 +647,7 @@
           <!-- Featured Imges -->
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="openLightbox('assets/featuredImg/f1.webp')"
+            onclick="openLightbox(0)"
           >
             <img
               src="assets/featuredImg/f1.webp"
@@ -358,7 +657,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="openLightbox('assets/featuredImg/f2.webp')"
+            onclick="openLightbox(1)"
           >
             <img
               src="assets/featuredImg/f2.webp"
@@ -368,7 +667,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="openLightbox('assets/featuredImg/f3.webp')"
+            onclick="openLightbox(2)"
           >
             <img
               src="assets/featuredImg/f3.webp"
@@ -378,7 +677,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="openLightbox('assets/featuredImg/f5.webp')"
+            onclick="openLightbox(3)"
           >
             <img
               src="assets/featuredImg/f5.webp"
@@ -388,7 +687,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="openLightbox('assets/featuredImg/f4.webp')"
+            onclick="openLightbox(4)"
           >
             <img
               src="assets/featuredImg/f4.webp"
@@ -398,7 +697,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="openLightbox('assets/featuredImg/f6.webp')"
+            onclick="openLightbox(5)"
           >
             <img
               src="assets/featuredImg/f6.webp"
@@ -408,7 +707,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="openLightbox('assets/featuredImg/f7.webp')"
+            onclick="openLightbox(6)"
           >
             <img
               src="assets/featuredImg/f7.webp"
@@ -418,7 +717,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="openLightbox('assets/featuredImg/f8.webp')"
+            onclick="openLightbox(7)"
           >
             <img
               src="assets/featuredImg/f8.webp"
@@ -428,7 +727,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="openLightbox('assets/featuredImg/f9.webp')"
+            onclick="openLightbox(8)"
           >
             <img
               src="assets/featuredImg/f9.webp"
@@ -450,15 +749,15 @@
     </section>
 
     <!-- Brand Story -->
-    <section class="bg-black py-20 px-4">
+    <section class="bg-black py-12 md:py-20 px-4">
       <div class="container mx-auto">
         <!-- Premium Content Box -->
         <div
-          class="max-w-3xl mx-auto text-center rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-yellow-500/20 px-8 py-12 shadow-[0_20px_80px_rgba(255,215,0,0.06)] animate-fade-up"
+          class="max-w-3xl mx-auto text-center rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-yellow-500/20 px-6 md:px-8 py-8 md:py-12 shadow-[0_20px_80px_rgba(255,215,0,0.06)] animate-fade-up"
         >
           <!-- Title -->
           <h2
-            class="text-3xl md:text-4xl font-serif font-medium tracking-widest uppercase bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 bg-clip-text text-transparent mb-4"
+            class="text-2xl md:text-3xl lg:text-4xl font-serif font-medium tracking-widest uppercase bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 bg-clip-text text-transparent mb-4"
           >
             Our Story
           </h2>
@@ -501,7 +800,7 @@
     </section>
 
     <!-- Services - Horizontal Scrolling -->
-    <section class="py-20 px-6 relative overflow-hidden">
+    <section class="py-12 md:py-20 px-4 md:px-6 relative overflow-hidden">
       <style>
         .services-scroll-container {
           scroll-behavior: smooth;
@@ -659,14 +958,16 @@
       </style>
 
       <div class="container mx-auto">
-        <div class="text-center mb-16 animate-on-scroll">
-          <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+        <div class="text-center mb-8 md:mb-16 animate-on-scroll">
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4 md:mb-6"
+          >
             Signature Services
           </h2>
-          <p class="text-xl text-gray-400 mb-4">
+          <p class="text-base md:text-xl text-gray-400 mb-2 md:mb-4 px-4">
             Crafting your perfect wedding experience
           </p>
-          <p class="text-sm text-gray-500 md:block hidden">
+          <p class="text-xs md:text-sm text-gray-500 md:block hidden">
             Scroll horizontally to explore all our services →
           </p>
         </div>
@@ -949,19 +1250,21 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="py-20 px-6 bg-dark-gray">
+    <section class="py-12 md:py-20 px-4 md:px-6 bg-dark-gray">
       <div class="container mx-auto">
-        <div class="text-center mb-16 animate-on-scroll">
-          <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+        <div class="text-center mb-8 md:mb-16 animate-on-scroll">
+          <h2
+            class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-4 md:mb-6"
+          >
             What Couples Say
           </h2>
-          <p class="text-xl text-gray-400">
+          <p class="text-base md:text-xl text-gray-400 px-4">
             Testimonials from our beautiful couples
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8 animate-on-scroll">
-          <div class="bg-dark-bg p-8 rounded-lg">
+        <div class="grid md:grid-cols-2 gap-4 md:gap-8 animate-on-scroll">
+          <div class="bg-dark-bg p-6 md:p-8 rounded-lg">
             <div class="flex items-center mb-4">
               <div class="text-gold text-2xl mr-2">
                 <i class="fas fa-quote-left"></i>
@@ -992,7 +1295,7 @@
             </div>
           </div>
 
-          <div class="bg-dark-bg p-8 rounded-lg">
+          <div class="bg-dark-bg p-6 md:p-8 rounded-lg">
             <div class="flex items-center mb-4">
               <div class="text-gold text-2xl mr-2">
                 <i class="fas fa-quote-left"></i>
@@ -1027,7 +1330,7 @@
     </section>
 
     <!-- Video Showcase (6 YouTube videos) -->
-    <section class="py-20 px-6">
+    <section class="py-12 md:py-20 px-4 md:px-6">
       <style>
         .video-grid {
           display: grid;
@@ -1524,14 +1827,21 @@
     </script>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
       <img id="lightbox-img" src="" alt="Gallery image" />
       <button
-        class="absolute top-4 right-4 text-white text-3xl hover:text-gold transition-colors"
-        onclick="closeLightbox()"
+        class="absolute top-4 right-4 text-white text-3xl hover:text-gold transition-colors z-[1001]"
+        onclick="closeLightbox(event)"
       >
         <i class="fas fa-times"></i>
       </button>
+      <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1, event)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1, event)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="lightbox-counter" id="lightbox-counter"></div>
     </div>
 
     <script>
@@ -1574,18 +1884,44 @@
       });
 
       // Lightbox functionality
-      function openLightbox(imageSrc) {
+      const galleryImages = [
+        'assets/featuredImg/f1.webp',
+        'assets/featuredImg/f2.webp',
+        'assets/featuredImg/f3.webp',
+        'assets/featuredImg/f5.webp',
+        'assets/featuredImg/f4.webp',
+        'assets/featuredImg/f6.webp',
+        'assets/featuredImg/f7.webp',
+        'assets/featuredImg/f8.webp',
+        'assets/featuredImg/f9.webp'
+      ];
+      let currentImageIndex = 0;
+
+      function openLightbox(index) {
+        currentImageIndex = index;
         const lightbox = document.getElementById("lightbox");
         const lightboxImg = document.getElementById("lightbox-img");
-        lightboxImg.src = imageSrc;
+        const counter = document.getElementById("lightbox-counter");
+        lightboxImg.src = galleryImages[currentImageIndex];
+        counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
         lightbox.classList.add("active");
         document.body.style.overflow = "hidden";
       }
 
-      function closeLightbox() {
+      function closeLightbox(event) {
+        if (event) event.stopPropagation();
         const lightbox = document.getElementById("lightbox");
         lightbox.classList.remove("active");
         document.body.style.overflow = "auto";
+      }
+
+      function navigateLightbox(direction, event) {
+        if (event) event.stopPropagation();
+        currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+        const lightboxImg = document.getElementById("lightbox-img");
+        const counter = document.getElementById("lightbox-counter");
+        lightboxImg.src = galleryImages[currentImageIndex];
+        counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
       }
 
       // Close lightbox with Escape key
@@ -1622,6 +1958,74 @@
           behavior: "smooth",
         });
       }
+
+      // Counter Animation
+      function animateCounter(element) {
+        const target = parseInt(element.getAttribute("data-target"));
+        const suffix = element.getAttribute("data-suffix");
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = suffix
+              ? target + suffix
+              : target >= 1000
+                ? target.toLocaleString() + "+"
+                : target + "+";
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(current).toLocaleString();
+          }
+        }, 16);
+      }
+
+      // Animate statistics on scroll
+      const statSection = document
+        .querySelector(".stat-animate")
+        ?.closest("section");
+      if (statSection) {
+        const statObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target
+                  .querySelectorAll(".stat-animate, .image-animate")
+                  .forEach((el) => {
+                    el.classList.add("visible");
+                  });
+                statObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 },
+        );
+        statObserver.observe(statSection);
+      }
+
+      // Observe stats section
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              document
+                .querySelectorAll(".stat-number[data-target]")
+                .forEach((el) => {
+                  animateCounter(el);
+                });
+              statsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      const statsSection = document
+        .querySelector(".stat-number[data-target]")
+        ?.closest("section");
+      if (statsSection) statsObserver.observe(statsSection);
 
       // Smart scroll: Global wheel handler that switches to horizontal when Services is visible
       const servicesContainer = document.getElementById("servicesContainer");
