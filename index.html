@@ -2002,10 +2002,17 @@
       // Mobile menu toggle
       const mobileMenuBtn = document.getElementById("mobile-menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
+      const mobileOverlay = document.getElementById("mobile-overlay");
 
       mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle("active");
+        mobileOverlay.classList.toggle("active");
       });
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove("active");
+        mobileOverlay.classList.remove("active");
+      }
 
       // Animation on scroll
       const observerOptions = {
