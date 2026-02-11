@@ -67,6 +67,40 @@
         background: rgba(10, 10, 10, 0.9);
       }
 
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 60;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .mobile-menu.active {
+        right: 0;
+      }
+
+      .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        z-index: 59;
+      }
+
+      .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
       .hero-bg {
         position: relative;
         width: 100vw;
@@ -327,36 +361,66 @@
             <i class="fas fa-bars text-xl"></i>
           </button>
         </div>
-
-        <div class="md:hidden mt-4 pb-4 hidden" id="mobile-menu">
-          <div class="flex flex-col space-y-4">
-            <a
-              href="index.html"
-              class="hover:text-gold transition-colors text-white"
-              >Home</a
-            >
-            <a href="about.html" class="hover:text-gold transition-colors"
-              >About</a
-            >
-            <a href="services.html" class="hover:text-gold transition-colors"
-              >Services</a
-            >
-            <a href="gallery.html" class="hover:text-gold transition-colors"
-              >Gallery</a
-            >
-            <a href="contact.html" class="hover:text-gold transition-colors"
-              >Contact</a
-            >
-            <a
-              href="contact.html"
-              class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium inline-block text-center mt-4"
-            >
-              Book Now
-            </a>
-          </div>
-        </div>
       </div>
     </nav>
+
+    <!-- Mobile Overlay -->
+    <div
+      class="mobile-overlay"
+      id="mobile-overlay"
+      onclick="closeMobileMenu()"
+    ></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="flex flex-col h-full p-6">
+        <div class="flex justify-between items-center mb-8">
+          <span class="text-2xl font-serif font-bold text-gold">Menu</span>
+          <button class="text-white text-2xl" onclick="closeMobileMenu()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+          <a
+            href="index.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >About</a
+          >
+          <a
+            href="services.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Services</a
+          >
+          <a
+            href="gallery.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Gallery</a
+          >
+          <a
+            href="contact.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Contact</a
+          >
+          <a
+            href="contact.html"
+            class="bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-medium text-center mt-4"
+            onclick="closeMobileMenu()"
+          >
+            Book Now
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-bg relative w-full z-0">
@@ -748,53 +812,137 @@
       </div>
     </section>
 
-    <!-- Brand Story -->
-    <section class="bg-black py-12 md:py-20 px-4">
-      <div class="container mx-auto">
-        <!-- Premium Content Box -->
-        <div
-          class="max-w-3xl mx-auto text-center rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-yellow-500/20 px-6 md:px-8 py-8 md:py-12 shadow-[0_20px_80px_rgba(255,215,0,0.06)] animate-fade-up"
-        >
-          <!-- Title -->
-          <h2
-            class="text-2xl md:text-3xl lg:text-4xl font-serif font-medium tracking-widest uppercase bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 bg-clip-text text-transparent mb-4"
+    <!-- Why Choose Us -->
+    <section class="bg-dark-bg py-16 lg:py-24 px-6 lg:px-12">
+      <style>
+        .circular-image {
+          aspect-ratio: 1;
+          object-fit: cover;
+        }
+        .gold-border {
+          border: 3px solid #d4af37;
+        }
+      </style>
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Left Side - Images -->
+          <div
+            class="relative flex items-center justify-center lg:justify-start h-72 sm:h-80 lg:h-96"
           >
-            Our Story
-          </h2>
+            <!-- Large Circle with Gold Border -->
+            <div
+              class="w-64 h-64 sm:w-64 sm:h-64 lg:w-96 lg:h-96 rounded-full overflow-hidden gold-border shadow-2xl relative z-10"
+            >
+              <img
+                src="assets/images/wcu1.webp"
+                alt="Indian bride and groom wedding ceremony"
+                class="circular-image w-full h-full"
+              />
+            </div>
 
-          <!-- Micro Divider -->
-          <div class="flex justify-center mb-6">
-            <span
-              class="w-14 h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent"
-            ></span>
+            <!-- Smaller Overlapping Circle -->
+            <div
+              class="w-32 h-32 sm:w-52 sm:h-52 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl absolute bottom-0 right-4 sm:right-8 lg:bottom-8 lg:right-8 z-20 border-4 border-dark-bg"
+            >
+              <img
+                src="assets/images/wcu2.webp"
+                alt="Indian wedding couple outdoor celebration"
+                class="circular-image w-full h-full"
+              />
+            </div>
           </div>
 
-          <!-- Content -->
-          <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-            Every love story is unique. We focus on emotions, details, and
-            timeless moments crafted with
-            <span class="text-yellow-300"> authenticity and soul</span>.
-          </p>
+          <!-- Right Side - Content -->
+          <div class="space-y-6 lg:space-y-8">
+            <!-- Section Header -->
+            <div>
+              <p
+                class="text-gold uppercase tracking-widest text-xs mb-2 font-medium"
+              >
+                Why Choose Us
+              </p>
+              <h2
+                class="font-serif text-2xl lg:text-3xl xl:text-4xl font-bold text-gold leading-tight"
+              >
+                Adding the memories of every moment
+              </h2>
+            </div>
 
-          <p class="text-sm md:text-base text-gray-400 italic">
-            Frames that feel. Stories that last.
-          </p>
-        </div>
+            <!-- Features List -->
+            <div class="space-y-6">
+              <!-- Feature 1 -->
+              <div class="flex gap-4">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-12 h-12 bg-gold rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-camera text-dark-bg text-xl"></i>
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="font-serif text-lg lg:text-xl font-semibold text-white mb-2"
+                  >
+                    Capturing Your Moments with Expertise
+                  </h3>
+                  <p class="text-gray-400 text-sm leading-relaxed">
+                    Our seasoned photographer brings years of professional
+                    experience to your special day. With a keen eye for detail
+                    and an innate talent for capturing emotion, they ensure that
+                    every moment, from the tender glances to the joyous
+                    celebrations, is preserved beautifully for you to cherish
+                    forever.
+                  </p>
+                </div>
+              </div>
 
-        <!-- 🔥 Modern Golden Divider AFTER the Box -->
-        <div class="mt-14 flex flex-col items-center">
-          <!-- Floating Dot -->
-          <span
-            class="w-2 h-2 rounded-full bg-yellow-400 mb-4 animate-pulse"
-          ></span>
+              <!-- Feature 2 -->
+              <div class="flex gap-4">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-12 h-12 bg-gold rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-image text-dark-bg text-xl"></i>
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="font-serif text-lg lg:text-xl font-semibold text-white mb-2"
+                  >
+                    Crafting Timeless Memories
+                  </h3>
+                  <p class="text-gray-400 text-sm leading-relaxed">
+                    Entrust your wedding memories to someone who understands the
+                    significance of each shot. Our photographer not only knows
+                    how to compose stunning images but also recognizes the
+                    fleeting nature of the moments they capture.
+                  </p>
+                </div>
+              </div>
 
-          <!-- Elegant Line -->
-          <span
-            class="w-40 h-px bg-gradient-to-r from-transparent via-yellow-400/80 to-transparent"
-          ></span>
-
-          <!-- Subtle Glow -->
-          <span class="w-56 h-[2px] bg-yellow-400/10 blur-xl mt-1"></span>
+              <!-- Feature 3 -->
+              <div class="flex gap-4">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-12 h-12 bg-gold rounded-lg flex items-center justify-center"
+                  >
+                    <i class="fas fa-briefcase text-dark-bg text-xl"></i>
+                  </div>
+                </div>
+                <div>
+                  <h3
+                    class="font-serif text-lg lg:text-xl font-semibold text-white mb-2"
+                  >
+                    Support 24/7
+                  </h3>
+                  <p class="text-gray-400 text-sm leading-relaxed">
+                    We're here for you around the clock, ensuring your special
+                    moments are captured perfectly at any time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1835,10 +1983,16 @@
       >
         <i class="fas fa-times"></i>
       </button>
-      <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1, event)">
+      <button
+        class="lightbox-nav lightbox-prev"
+        onclick="navigateLightbox(-1, event)"
+      >
         <i class="fas fa-chevron-left"></i>
       </button>
-      <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1, event)">
+      <button
+        class="lightbox-nav lightbox-next"
+        onclick="navigateLightbox(1, event)"
+      >
         <i class="fas fa-chevron-right"></i>
       </button>
       <div class="lightbox-counter" id="lightbox-counter"></div>
@@ -1885,15 +2039,15 @@
 
       // Lightbox functionality
       const galleryImages = [
-        'assets/featuredImg/f1.webp',
-        'assets/featuredImg/f2.webp',
-        'assets/featuredImg/f3.webp',
-        'assets/featuredImg/f5.webp',
-        'assets/featuredImg/f4.webp',
-        'assets/featuredImg/f6.webp',
-        'assets/featuredImg/f7.webp',
-        'assets/featuredImg/f8.webp',
-        'assets/featuredImg/f9.webp'
+        "assets/featuredImg/f1.webp",
+        "assets/featuredImg/f2.webp",
+        "assets/featuredImg/f3.webp",
+        "assets/featuredImg/f5.webp",
+        "assets/featuredImg/f4.webp",
+        "assets/featuredImg/f6.webp",
+        "assets/featuredImg/f7.webp",
+        "assets/featuredImg/f8.webp",
+        "assets/featuredImg/f9.webp",
       ];
       let currentImageIndex = 0;
 
@@ -1917,7 +2071,9 @@
 
       function navigateLightbox(direction, event) {
         if (event) event.stopPropagation();
-        currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+        currentImageIndex =
+          (currentImageIndex + direction + galleryImages.length) %
+          galleryImages.length;
         const lightboxImg = document.getElementById("lightbox-img");
         const counter = document.getElementById("lightbox-counter");
         lightboxImg.src = galleryImages[currentImageIndex];
