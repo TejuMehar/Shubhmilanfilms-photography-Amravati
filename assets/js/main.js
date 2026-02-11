@@ -481,6 +481,24 @@ document.addEventListener('DOMContentLoaded', () => {
     new FormManager();
     new PerformanceOptimizer();
 
+    // Featured Moments Animation
+    const masonryItems = document.querySelectorAll('.masonry-item');
+    if (masonryItems.length > 0) {
+        const masonryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    masonryObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        masonryItems.forEach(item => masonryObserver.observe(item));
+    }
+
     // Add smooth scrolling to all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

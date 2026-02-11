@@ -186,10 +186,28 @@ html {
 /* Masonry grid improvements */
 .masonry-item {
   transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
 }
 
+.masonry-item.animate-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.masonry-item:nth-child(1) { transition-delay: 0.1s; }
+.masonry-item:nth-child(2) { transition-delay: 0.15s; }
+.masonry-item:nth-child(3) { transition-delay: 0.2s; }
+.masonry-item:nth-child(4) { transition-delay: 0.25s; }
+.masonry-item:nth-child(5) { transition-delay: 0.3s; }
+.masonry-item:nth-child(6) { transition-delay: 0.35s; }
+.masonry-item:nth-child(7) { transition-delay: 0.4s; }
+.masonry-item:nth-child(8) { transition-delay: 0.45s; }
+.masonry-item:nth-child(9) { transition-delay: 0.5s; }
+
 .masonry-item:hover {
-  transform: scale(1.02);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
 }
 
 /* Video player custom styles */
@@ -315,3 +333,7 @@ html {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+
+
