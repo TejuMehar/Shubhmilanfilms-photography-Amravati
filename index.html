@@ -68,19 +68,12 @@
       }
 
       .hero-bg {
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        transition: background-image 0.8s ease-in-out;
+        margin-top: 73px;
       }
 
       .hero-slider {
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: relative;
         width: 100%;
-        height: 100%;
-        z-index: 1;
       }
 
       .hero-slide {
@@ -88,25 +81,23 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
         opacity: 0;
         transition: opacity 0.8s ease-in-out;
+      }
+
+      .hero-slide:first-child {
+        position: relative;
       }
 
       .hero-slide.active {
         opacity: 1;
       }
 
-      .hero-slide::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+      @media (min-width: 1024px) {
+        .hero-slide {
+          object-fit: cover;
+          height: 60vh;
+        }
       }
 
       .slider-nav {
@@ -135,6 +126,39 @@
 
       .slider-next {
         right: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .slider-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 14px;
+        }
+        .slider-prev {
+          left: 10px;
+        }
+        .slider-next {
+          right: 10px;
+        }
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        animation: floatUpDown 2s ease-in-out infinite;
+      }
+
+      @keyframes floatUpDown {
+        0%,
+        100% {
+          transform: translate(-50%, 0);
+        }
+        50% {
+          transform: translate(-50%, -15px);
+        }
       }
 
       .masonry-grid {
@@ -262,23 +286,26 @@
 
     <!-- Hero Section -->
     <section
-      class="hero-bg min-h-screen flex items-center justify-center relative w-full z-0"
-      class="hero-bg min-h-screen flex items-center justify-center relative w-full z-0 pb-20"
+      class="hero-bg relative w-full z-0 overflow-hidden"
+      style="margin-top: 73px"
     >
       <!-- Hero Slider -->
-      <div class="hero-slider">
-        <div
-          class="hero-slide active"
-          style="background-image: url(&quot;assets/images/hero1.webp&quot;)"
-        ></div>
-        <div
-          class="hero-slide"
-          style="background-image: url(&quot;assets/images/hero2.webp&quot;)"
-        ></div>
-        <div
-          class="hero-slide"
-          style="background-image: url(&quot;assets/images/hero3.webp&quot;)"
-        ></div>
+      <div class="hero-slider relative w-full">
+        <img
+          class="hero-slide active w-full h-auto object-contain"
+          src="assets/images/hero1.webp"
+          alt="Hero 1"
+        />
+        <img
+          class="hero-slide w-full h-auto object-contain"
+          src="assets/images/hero2.webp"
+          alt="Hero 2"
+        />
+        <img
+          class="hero-slide w-full h-auto object-contain"
+          src="assets/images/hero3.webp"
+          alt="Hero 3"
+        />
       </div>
 
       <!-- Navigation Buttons -->
@@ -289,37 +316,19 @@
         <i class="fas fa-chevron-right"></i>
       </button>
 
-      <!-- <div class="text-center px-6 animate-on-scroll relative z-10">
-        <h1
-          class="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight"
-        >
-          Every Frame<br />
-          <span class="text-gold">Tells a Story</span>
-        </h1>
-        <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
-          Crafting cinematic wedding films and timeless photography that
-          captures the essence of your love story
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="gallery.html"
-            class="bg-gold text-dark-bg px-8 py-4 rounded-full hover:bg-white transition-all duration-300 font-semibold text-lg"
+      <!-- Floating Scroll Indicator -->
+      <!-- <div class="scroll-indicator">
+        <div class="flex flex-col items-center gap-2">
+          <span class="text-gold text-sm font-light tracking-widest"
+            >SCROLL</span
           >
-            View Our Work
-          </a>
-          <a
-            href="contact.html"
-            class="border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-dark-bg transition-all duration-300 font-semibold text-lg"
+          <div
+            class="w-6 h-10 border-2 border-gold rounded-full flex justify-center pt-2"
           >
-            Book Consultation
-          </a>
+            <div class="w-1 h-2 bg-gold rounded-full animate-pulse"></div>
+          </div>
         </div>
       </div> -->
-      <div
-        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
-      >
-        <i class="fas fa-chevron-down text-2xl text-gold"></i>
-      </div>
     </section>
 
     <!-- Featured Moments -->
@@ -399,11 +408,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="
-              openLightbox(
-                'assets/featuredImg/f7.webp',
-              )
-            "
+            onclick="openLightbox('assets/featuredImg/f7.webp')"
           >
             <img
               src="assets/featuredImg/f7.webp"
@@ -413,11 +418,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="
-              openLightbox(
-                'assets/featuredImg/f8.webp',
-              )
-            "
+            onclick="openLightbox('assets/featuredImg/f8.webp')"
           >
             <img
               src="assets/featuredImg/f8.webp"
@@ -427,11 +428,7 @@
           </div>
           <div
             class="masonry-item scale-hover cursor-pointer"
-            onclick="
-              openLightbox(
-                'assets/featuredImg/f9.webp',
-              )
-            "
+            onclick="openLightbox('assets/featuredImg/f9.webp')"
           >
             <img
               src="assets/featuredImg/f9.webp"
