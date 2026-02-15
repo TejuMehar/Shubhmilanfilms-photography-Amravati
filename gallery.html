@@ -125,7 +125,9 @@
           </div>
 
           <div class="hidden md:flex space-x-8">
-            <a href="index.html" class="hover:text-gold transition-colors"
+            <a
+              href="index.html"
+              class="hover:text-gold transition-colors text-white"
               >Home</a
             >
             <a href="about.html" class="hover:text-gold transition-colors"
@@ -134,10 +136,11 @@
             <a href="services.html" class="hover:text-gold transition-colors"
               >Services</a
             >
-            <a
-              href="gallery.html"
-              class="hover:text-gold transition-colors text-gold"
+            <a href="gallery.html" class="hover:text-gold transition-colors"
               >Gallery</a
+            >
+            <a href="packages.html" class="hover:text-gold transition-colors"
+              >Packages</a
             >
             <a href="contact.html" class="hover:text-gold transition-colors"
               >Contact</a
@@ -160,48 +163,72 @@
       </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-overlay" onclick="closeMobileMenu()"></div>
+    <!-- Mobile Overlay -->
+    <div
+      class="mobile-overlay"
+      id="mobile-overlay"
+      onclick="closeMobileMenu()"
+    ></div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu">
-      <button
-        class="absolute top-6 right-6 text-white text-2xl"
-        onclick="closeMobileMenu()"
-      >
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="flex flex-col space-y-6">
-        <a href="index.html" class="text-lg hover:text-gold transition-colors"
-          >Home</a
-        >
-        <a href="about.html" class="text-lg hover:text-gold transition-colors"
-          >About</a
-        >
-        <a
-          href="services.html"
-          class="text-lg hover:text-gold transition-colors"
-          >Services</a
-        >
-        <a
-          href="gallery.html"
-          class="text-lg hover:text-gold transition-colors text-gold"
-          >Gallery</a
-        >
-        <a href="contact.html" class="text-lg hover:text-gold transition-colors"
-          >Contact</a
-        >
-        <a
-          href="contact.html"
-          class="bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-medium inline-block text-center mt-4"
-        >
-          Book Now
-        </a>
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="flex flex-col h-full p-6">
+        <div class="flex justify-between items-center mb-8">
+          <span class="text-2xl font-serif font-bold text-gold">Menu</span>
+          <button class="text-white text-2xl" onclick="closeMobileMenu()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+          <a
+            href="index.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >About</a
+          >
+          <a
+            href="services.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Services</a
+          >
+          <a
+            href="gallery.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Gallery</a
+          >
+          <a
+            href="packages.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Packages</a
+          >
+          <a
+            href="contact.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Contact</a
+          >
+          <a
+            href="contact.html"
+            class="bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-medium text-center mt-4"
+            onclick="closeMobileMenu()"
+          >
+            Book Now
+          </a>
+        </div>
       </div>
     </div>
-
     <!-- Hero Section -->
     <section
+      id="work"
       class="pt-32 pb-20 px-6 bg-gradient-to-b from-dark-gray to-dark-bg"
     >
       <div class="container mx-auto text-center animate-on-scroll">
@@ -701,6 +728,13 @@
                   href="gallery.html"
                   class="text-gray-400 hover:text-gold transition-colors duration-300 flex items-center gap-2"
                   ><i class="fas fa-chevron-right text-xs"></i> Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="packages.html"
+                  class="text-gray-400 hover:text-gold transition-colors duration-300 flex items-center gap-2"
+                  ><i class="fas fa-chevron-right text-xs"></i>Packages</a
                 >
               </li>
               <li>

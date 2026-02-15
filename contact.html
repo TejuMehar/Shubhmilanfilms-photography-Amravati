@@ -88,7 +88,9 @@
           </div>
 
           <div class="hidden md:flex space-x-8">
-            <a href="index.html" class="hover:text-gold transition-colors"
+            <a
+              href="index.html"
+              class="hover:text-gold transition-colors text-white"
               >Home</a
             >
             <a href="about.html" class="hover:text-gold transition-colors"
@@ -100,9 +102,10 @@
             <a href="gallery.html" class="hover:text-gold transition-colors"
               >Gallery</a
             >
-            <a
-              href="contact.html"
-              class="hover:text-gold transition-colors text-gold"
+            <a href="packages.html" class="hover:text-gold transition-colors"
+              >Packages</a
+            >
+            <a href="contact.html" class="hover:text-gold transition-colors"
               >Contact</a
             >
           </div>
@@ -123,223 +126,261 @@
       </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-overlay" onclick="closeMobileMenu()"></div>
+    <!-- Mobile Overlay -->
+    <div
+      class="mobile-overlay"
+      id="mobile-overlay"
+      onclick="closeMobileMenu()"
+    ></div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu">
-      <button
-        class="absolute top-6 right-6 text-white text-2xl"
-        onclick="closeMobileMenu()"
-      >
-        <i class="fas fa-times"></i>
-      </button>
-      <div class="flex flex-col space-y-6">
-        <a href="index.html" class="text-lg hover:text-gold transition-colors"
-          >Home</a
-        >
-        <a href="about.html" class="text-lg hover:text-gold transition-colors"
-          >About</a
-        >
-        <a
-          href="services.html"
-          class="text-lg hover:text-gold transition-colors"
-          >Services</a
-        >
-        <a href="gallery.html" class="text-lg hover:text-gold transition-colors"
-          >Gallery</a
-        >
-        <a
-          href="contact.html"
-          class="text-lg hover:text-gold transition-colors text-gold"
-          >Contact</a
-        >
-        <a
-          href="contact.html"
-          class="bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-medium inline-block text-center mt-4"
-        >
-          Book Now
-        </a>
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="flex flex-col h-full p-6">
+        <div class="flex justify-between items-center mb-8">
+          <span class="text-2xl font-serif font-bold text-gold">Menu</span>
+          <button class="text-white text-2xl" onclick="closeMobileMenu()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+          <a
+            href="index.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >About</a
+          >
+          <a
+            href="services.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Services</a
+          >
+          <a
+            href="gallery.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Gallery</a
+          >
+          <a
+            href="packages.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Packages</a
+          >
+          <a
+            href="contact.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Contact</a
+          >
+          <a
+            href="contact.html"
+            class="bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-medium text-center mt-4"
+            onclick="closeMobileMenu()"
+          >
+            Book Now
+          </a>
+        </div>
       </div>
     </div>
 
     <!-- Hero Section -->
-    <section
-      class="pt-32 pb-20 px-6 bg-gradient-to-b from-dark-gray to-dark-bg"
-    >
-      <div class="container mx-auto text-center animate-on-scroll">
-        <h1 class="text-5xl md:text-6xl font-serif font-bold mb-6">
-          Get In <span class="text-gold">Touch</span>
-        </h1>
-        <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+    <style>
+      .modern-section {
+        position: relative;
+        padding: 140px 20px 100px;
+        background: linear-gradient(180deg, #111111, #1a1a1a);
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .modern-section h1 {
+        font-size: 56px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #ffffff;
+        letter-spacing: 1px;
+      }
+
+      .modern-section h1 span {
+        color: #d4af37;
+      }
+
+      .modern-section p {
+        font-size: 20px;
+        color: #bfbfbf;
+        max-width: 750px;
+        margin: 0 auto 40px;
+        line-height: 1.8;
+      }
+
+      /* Elegant Divider */
+      .divider {
+        width: 120px;
+        height: 3px;
+        margin: 0 auto 40px;
+        background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .divider::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, #fff, transparent);
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        100% {
+          left: 100%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .modern-section h1 {
+          font-size: 38px;
+        }
+
+        .modern-section p {
+          font-size: 17px;
+        }
+      }
+    </style>
+
+    <section class="modern-section">
+      <div class="container mx-auto">
+        <h1>Get In <span>Touch</span></h1>
+
+        <div class="divider"></div>
+
+        <p>
           Ready to capture your love story? Let's discuss your wedding
-          photography and cinematography needs
+          photography and cinematography needs.
         </p>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="py-20 px-6">
-      <div class="container mx-auto">
+    <section
+      class="py-20 px-6 bg-gradient-to-br from-black via-zinc-900 to-black text-white"
+    >
+      <div class="max-w-7xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-16">
           <!-- Contact Form -->
-          <div class="animate-on-scroll">
+          <div
+            class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-xl"
+          >
             <h2 class="text-3xl font-serif font-bold mb-8">
-              Send Us a Message
+              Send Us a <span class="text-yellow-500">Message</span>
             </h2>
-            <form class="space-y-6" id="contact-form">
+
+            <form class="space-y-6">
               <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label class="block text-sm font-medium mb-2"
-                    >Your Name *</label
-                  >
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    class="form-input w-full px-4 py-3 rounded-lg text-white"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium mb-2"
-                    >Partner's Name</label
-                  >
-                  <input
-                    type="text"
-                    name="partner_name"
-                    class="form-input w-full px-4 py-3 rounded-lg text-white"
-                    placeholder="Enter partner's name"
-                  />
-                </div>
+                <input
+                  type="text"
+                  placeholder="Your Name *"
+                  class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/30 outline-none transition-all duration-300"
+                  required
+                />
+
+                <input
+                  type="text"
+                  placeholder="Partner's Name"
+                  class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/30 outline-none transition-all duration-300"
+                />
               </div>
 
               <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label class="block text-sm font-medium mb-2"
-                    >Email Address *</label
-                  >
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    class="form-input w-full px-4 py-3 rounded-lg text-white"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium mb-2"
-                    >Phone Number *</label
-                  >
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    class="form-input w-full px-4 py-3 rounded-lg text-white"
-                    placeholder="+91 98765 43210"
-                  />
-                </div>
+                <input
+                  type="email"
+                  placeholder="Email Address *"
+                  class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/30 outline-none transition-all duration-300"
+                  required
+                />
+
+                <input
+                  type="tel"
+                  placeholder="Phone Number *"
+                  class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/30 outline-none transition-all duration-300"
+                  required
+                />
               </div>
 
               <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label class="block text-sm font-medium mb-2"
-                    >Wedding Date</label
-                  >
-                  <input
-                    type="date"
-                    name="wedding_date"
-                    class="form-input w-full px-4 py-3 rounded-lg text-white"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium mb-2"
-                    >Wedding Venue</label
-                  >
-                  <input
-                    type="text"
-                    name="venue"
-                    class="form-input w-full px-4 py-3 rounded-lg text-white"
-                    placeholder="Venue name or city"
-                  />
-                </div>
+                <input
+                  type="date"
+                  class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/30 outline-none transition-all duration-300"
+                />
+
+                <input
+                  type="text"
+                  placeholder="Wedding Venue"
+                  class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/30 outline-none transition-all duration-300"
+                />
               </div>
 
+              <!-- Services -->
               <div>
-                <label class="block text-sm font-medium mb-2"
+                <label class="block mb-3 text-sm text-gray-300"
                   >Services Interested In</label
                 >
-                <div class="grid md:grid-cols-2 gap-4">
-                  <label class="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="services[]"
-                      value="wedding_photography"
-                      class="mr-3 text-gold"
-                    />
-                    <span>Wedding Photography</span>
+                <div class="grid md:grid-cols-2 gap-3 text-gray-300">
+                  <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" class="accent-yellow-500 w-4 h-4" />
+                    Wedding Photography
                   </label>
-                  <label class="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="services[]"
-                      value="cinematic_films"
-                      class="mr-3 text-gold"
-                    />
-                    <span>Cinematic Films</span>
+
+                  <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" class="accent-yellow-500 w-4 h-4" />
+                    Cinematic Films
                   </label>
-                  <label class="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="services[]"
-                      value="prewedding"
-                      class="mr-3 text-gold"
-                    />
-                    <span>Pre-Wedding Shoot</span>
+
+                  <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" class="accent-yellow-500 w-4 h-4" />
+                    Pre-Wedding Shoot
                   </label>
-                  <label class="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="services[]"
-                      value="drone"
-                      class="mr-3 text-gold"
-                    />
-                    <span>Drone Photography</span>
+
+                  <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" class="accent-yellow-500 w-4 h-4" />
+                    Drone Photography
                   </label>
                 </div>
               </div>
 
-              <div>
-                <label class="block text-sm font-medium mb-2"
-                  >Budget Range</label
-                >
-                <select
-                  name="budget"
-                  class="form-input w-full px-4 py-3 rounded-lg text-white"
-                >
-                  <option value="">Select your budget range</option>
-                  <option value="50000-100000">₹50,000 - ₹1,00,000</option>
-                  <option value="100000-200000">₹1,00,000 - ₹2,00,000</option>
-                  <option value="200000-300000">₹2,00,000 - ₹3,00,000</option>
-                  <option value="300000+">₹3,00,000+</option>
-                </select>
-              </div>
+              <!-- Budget -->
+              <select
+                class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/30 outline-none transition-all duration-300 text-gray-300"
+              >
+                <option>Select your budget range</option>
+                <option>₹25,000 - ₹50,000</option>
+                <option>₹50,000 - ₹75,000</option>
+                <option>₹75,000 - ₹1,00,000</option>
+                <option>₹1,00,000 - ₹1,50,000</option>
+                <option>₹2,00,000+</option>
+              </select>
 
-              <div>
-                <label class="block text-sm font-medium mb-2"
-                  >Tell Us About Your Vision</label
-                >
-                <textarea
-                  name="message"
-                  rows="5"
-                  class="form-input w-full px-4 py-3 rounded-lg text-white"
-                  placeholder="Share your wedding vision, style preferences, special requirements, or any questions you have..."
-                ></textarea>
-              </div>
+              <!-- Message -->
+              <textarea
+                rows="5"
+                placeholder="Tell us about your wedding vision..."
+                class="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/30 outline-none transition-all duration-300"
+              ></textarea>
 
+              <!-- Button -->
               <button
                 type="submit"
-                class="w-full bg-gold text-dark-bg py-4 rounded-lg hover:bg-white transition-all duration-300 font-semibold text-lg"
+                class="w-full py-4 rounded-lg font-semibold text-lg bg-gradient-to-r from-yellow-500 to-yellow-400 text-black hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300"
               >
                 Send Message
               </button>
@@ -347,210 +388,92 @@
           </div>
 
           <!-- Contact Information -->
-          <div class="animate-on-scroll">
+          <div
+            class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-xl"
+          >
             <h2 class="text-3xl font-serif font-bold mb-8">
-              Contact Information
+              Contact <span class="text-yellow-500">Information</span>
             </h2>
 
-            <div class="space-y-8 mb-12">
-              <div class="flex items-start">
+            <div class="space-y-8">
+              <div class="flex items-start gap-4">
                 <div
-                  class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg mr-4 mt-1"
+                  class="w-12 h-12 bg-yellow-500 text-black rounded-full flex items-center justify-center"
                 >
                   <i class="fas fa-phone"></i>
                 </div>
                 <div>
-                  <h3 class="text-xl font-semibold mb-2">Phone</h3>
-                  <p class="text-gray-400 mb-2">+91 98765 43210</p>
-                  <p class="text-gray-400">+91 87654 32109</p>
+                  <h3 class="font-semibold">Phone</h3>
+                  <p class="text-gray-400">+91 98765 43210</p>
                 </div>
               </div>
 
-              <div class="flex items-start">
+              <div class="flex items-start gap-4">
                 <div
-                  class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg mr-4 mt-1"
+                  class="w-12 h-12 bg-yellow-500 text-black rounded-full flex items-center justify-center"
                 >
                   <i class="fas fa-envelope"></i>
                 </div>
                 <div>
-                  <h3 class="text-xl font-semibold mb-2">Email</h3>
-                  <p class="text-gray-400 mb-2">hello@shubhmilanfilms.com</p>
-                  <p class="text-gray-400">bookings@shubhmilanfilms.com</p>
+                  <h3 class="font-semibold">Email</h3>
+                  <p class="text-gray-400">hello@shubhmilanfilms.com</p>
                 </div>
               </div>
 
-              <div class="flex items-start">
+              <div class="flex items-start gap-4">
                 <div
-                  class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg mr-4 mt-1"
+                  class="w-12 h-12 bg-yellow-500 text-black rounded-full flex items-center justify-center"
                 >
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <h3 class="text-xl font-semibold mb-2">Address</h3>
-                  <p class="text-gray-400">
-                    123 Photography Street,<br />Bandra West, Mumbai,<br />Maharashtra
-                    400050, India
-                  </p>
+                  <h3 class="font-semibold">Address</h3>
+                  <p class="text-gray-400">Amravati, Maharashtra</p>
                 </div>
               </div>
+            </div>
 
-              <div class="flex items-start">
+            <!-- Social -->
+            <div class="mt-10">
+              <h3 class="font-semibold mb-4">Follow Us</h3>
+              <div class="flex gap-4">
                 <div
-                  class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg mr-4 mt-1"
+                  class="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center hover:scale-110 transition"
                 >
-                  <i class="fas fa-clock"></i>
+                  <i class="fab fa-instagram text-white"></i>
                 </div>
-                <div>
-                  <h3 class="text-xl font-semibold mb-2">Working Hours</h3>
-                  <p class="text-gray-400 mb-1">
-                    Monday - Saturday: 10:00 AM - 8:00 PM
-                  </p>
-                  <p class="text-gray-400">Sunday: 11:00 AM - 6:00 PM</p>
+                <div
+                  class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition"
+                >
+                  <i class="fab fa-facebook text-white"></i>
+                </div>
+                <div
+                  class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center hover:scale-110 transition"
+                >
+                  <i class="fab fa-youtube text-white"></i>
                 </div>
               </div>
             </div>
 
-            <!-- Quick Action Buttons -->
-            <div class="space-y-4">
-              <a
-                href="tel:+919876543210"
-                class="flex items-center justify-center bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-all duration-300 font-semibold"
-              >
-                <i class="fas fa-phone mr-3"></i>
-                Call Now
-              </a>
-              <a
-                href="https://wa.me/919876543210"
-                class="flex items-center justify-center bg-green-500 text-white py-3 px-6 rounded-lg hover:bg-green-600 transition-all duration-300 font-semibold"
-              >
-                <i class="fab fa-whatsapp mr-3"></i>
-                WhatsApp Us
-              </a>
-              <a
-                href="mailto:hello@shubhmilanfilms.com"
-                class="flex items-center justify-center bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-all duration-300 font-semibold"
-              >
-                <i class="fas fa-envelope mr-3"></i>
-                Send Email
-              </a>
-            </div>
+            <!-- Location Map -->
+            <div class="mt-10">
+              <h3 class="text-xl font-semibold mb-4">
+                Our <span class="text-yellow-500">Location</span>
+              </h3>
 
-            <!-- Social Links -->
-            <div class="mt-8">
-              <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
-              <div class="flex space-x-4">
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-colors"
-                >
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors"
-                >
-                  <i class="fab fa-facebook"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-colors"
-                >
-                  <i class="fab fa-youtube"></i>
-                </a>
-                <a
-                  href="#"
-                  class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center text-white hover:bg-blue-500 transition-colors"
-                >
-                  <i class="fab fa-twitter"></i>
-                </a>
+              <div
+                class="rounded-xl overflow-hidden border border-white/10 shadow-lg"
+              >
+                <iframe
+                  src="https://www.google.com/maps?q=Bandra%20West%20Mumbai&output=embed"
+                  class="w-full h-64"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="py-20 px-6 bg-dark-gray">
-      <div class="container mx-auto">
-        <div class="text-center mb-12 animate-on-scroll">
-          <h2 class="text-4xl font-serif font-bold mb-6">Find Us</h2>
-          <p class="text-xl text-gray-400">
-            Visit our studio for a personal consultation
-          </p>
-        </div>
-
-        <div class="animate-on-scroll">
-          <div class="bg-gray-300 h-96 rounded-lg overflow-hidden">
-            <!-- Google Maps Embed would go here -->
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.8267739870834!2d72.82682731490213!3d19.05097998710842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c9c676018b43%3A0x75f29d8b8f8b8b8b!2sBandra%20West%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1635789012345!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            >
-            </iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-20 px-6">
-      <div class="container mx-auto">
-        <div class="text-center mb-16 animate-on-scroll">
-          <h2 class="text-4xl font-serif font-bold mb-6">
-            Frequently Asked Questions
-          </h2>
-          <p class="text-xl text-gray-400">Quick answers to common questions</p>
-        </div>
-
-        <div class="max-w-4xl mx-auto space-y-6">
-          <div class="bg-dark-gray p-6 rounded-lg animate-on-scroll">
-            <h3 class="text-xl font-semibold mb-3 text-gold">
-              How far in advance should we book?
-            </h3>
-            <p class="text-gray-300">
-              We recommend booking 6-12 months in advance, especially for peak
-              wedding season (October to March). This ensures availability and
-              gives us time to plan your perfect day.
-            </p>
-          </div>
-
-          <div class="bg-dark-gray p-6 rounded-lg animate-on-scroll">
-            <h3 class="text-xl font-semibold mb-3 text-gold">
-              Do you travel for destination weddings?
-            </h3>
-            <p class="text-gray-300">
-              Yes! We love destination weddings and travel across India and
-              internationally. Travel costs are additional and discussed during
-              consultation.
-            </p>
-          </div>
-
-          <div class="bg-dark-gray p-6 rounded-lg animate-on-scroll">
-            <h3 class="text-xl font-semibold mb-3 text-gold">
-              How long does it take to receive our photos/videos?
-            </h3>
-            <p class="text-gray-300">
-              You'll receive a sneak peek within 48 hours. Complete edited
-              photos are delivered within 4-6 weeks, and cinematic films within
-              8-10 weeks.
-            </p>
-          </div>
-
-          <div class="bg-dark-gray p-6 rounded-lg animate-on-scroll">
-            <h3 class="text-xl font-semibold mb-3 text-gold">
-              Can we customize our package?
-            </h3>
-            <p class="text-gray-300">
-              Absolutely! Every couple is unique, and we tailor our services to
-              match your specific needs, style, and budget. Let's discuss your
-              vision!
-            </p>
           </div>
         </div>
       </div>
@@ -644,6 +567,13 @@
                   href="gallery.html"
                   class="text-gray-400 hover:text-gold transition-colors duration-300 flex items-center gap-2"
                   ><i class="fas fa-chevron-right text-xs"></i> Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="packages.html"
+                  class="text-gray-400 hover:text-gold transition-colors duration-300 flex items-center gap-2"
+                  ><i class="fas fa-chevron-right text-xs"></i>Packages</a
                 >
               </li>
               <li>

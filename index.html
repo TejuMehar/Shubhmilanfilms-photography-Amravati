@@ -347,6 +347,9 @@
             <a href="gallery.html" class="hover:text-gold transition-colors"
               >Gallery</a
             >
+            <a href="packages.html" class="hover:text-gold transition-colors"
+              >Packages</a
+            >
             <a href="contact.html" class="hover:text-gold transition-colors"
               >Contact</a
             >
@@ -408,6 +411,12 @@
             class="text-white hover:text-gold transition-colors text-lg"
             onclick="closeMobileMenu()"
             >Gallery</a
+          >
+          <a
+            href="packages.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Packages</a
           >
           <a
             href="contact.html"
@@ -1186,17 +1195,20 @@
           >
             What Couples Say
           </h2>
+
           <p class="text-base md:text-xl text-gray-400 px-4">
-            Testimonials from our beautiful couples
+            Heartfelt reviews from our Amravati couples
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-4 md:gap-8 animate-on-scroll">
+          <!-- Review 1 -->
           <div class="bg-dark-bg p-6 md:p-8 rounded-lg">
             <div class="flex items-center mb-4">
               <div class="text-gold text-2xl mr-2">
                 <i class="fas fa-quote-left"></i>
               </div>
+
               <div class="flex text-gold">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -1205,29 +1217,34 @@
                 <i class="fas fa-star"></i>
               </div>
             </div>
+
             <p class="text-gray-300 mb-6 leading-relaxed">
-              "Shubhmilanfilms captured our wedding day perfectly. Every
-              emotion, every moment was beautifully preserved. We couldn't be
-              happier with the results!"
+              "Shubhmilanfilms did an amazing job at our wedding in Amravati.
+              Every ritual, every smile, and every emotional moment was captured
+              beautifully. Our family loved the photos and video!"
             </p>
+
             <div class="flex items-center">
               <div
                 class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg font-bold mr-4"
               >
-                R&S
+                S&M
               </div>
+
               <div>
-                <h4 class="font-semibold">Rahul & Sneha</h4>
-                <p class="text-gray-400 text-sm">Mumbai Wedding</p>
+                <h4 class="font-semibold">Sanket & Madhuri</h4>
+                <p class="text-gray-400 text-sm">Amravati Wedding</p>
               </div>
             </div>
           </div>
 
+          <!-- Review 2 -->
           <div class="bg-dark-bg p-6 md:p-8 rounded-lg">
             <div class="flex items-center mb-4">
               <div class="text-gold text-2xl mr-2">
                 <i class="fas fa-quote-left"></i>
               </div>
+
               <div class="flex text-gold">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -1236,20 +1253,25 @@
                 <i class="fas fa-star"></i>
               </div>
             </div>
+
             <p class="text-gray-300 mb-6 leading-relaxed">
-              "The team's professionalism and creativity exceeded our
-              expectations. Our wedding film feels like a beautiful movie of our
-              love story."
+              "From pre-wedding shoot to wedding day coverage, everything was
+              perfect. The team was very friendly and professional. Best
+              photography service in Amravati!"
             </p>
+
             <div class="flex items-center">
               <div
                 class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-dark-bg font-bold mr-4"
               >
-                A&P
+                R&K
               </div>
+
               <div>
-                <h4 class="font-semibold">Arjun & Priya</h4>
-                <p class="text-gray-400 text-sm">Goa Wedding</p>
+                <h4 class="font-semibold">Rohit & Komal</h4>
+                <p class="text-gray-400 text-sm">
+                  Pre-Wedding & Wedding · Amravati
+                </p>
               </div>
             </div>
           </div>
@@ -1258,318 +1280,162 @@
     </section>
 
     <!-- Video Showcase (6 YouTube videos) -->
-    <section class="py-12 md:py-20 px-4 md:px-6">
+    <section class="py-12 md:py-20 px-4 md:px-6 bg-black">
       <style>
+        /* Video Grid */
         .video-grid {
           display: grid;
           gap: 1rem;
           grid-template-columns: repeat(1, minmax(0, 1fr));
         }
-        .video-card {
-          position: relative;
-          border-radius: 12px;
-          overflow: hidden;
-          cursor: pointer;
-          background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.02),
-            rgba(0, 0, 0, 0.15)
-          );
-          border: 1px solid rgba(255, 255, 255, 0.03);
-          transition:
-            transform 0.28s ease,
-            box-shadow 0.28s ease;
-        }
-        .video-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-        }
-        .video-thumb {
-          width: 100%;
-          height: 180px;
-          object-fit: cover;
-          display: block;
-        }
-        .video-meta {
-          padding: 1rem;
-        }
-        .video-title {
-          font-weight: 600;
-          color: #fff;
-          margin-bottom: 0.25rem;
-        }
-        .video-sub {
-          color: #c9c9c9;
-          font-size: 0.92rem;
-        }
-        .play-overlay {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          pointer-events: none;
-        }
-        .play-btn {
-          pointer-events: auto;
-          width: 64px;
-          height: 64px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, #d4af37, #f0e68c);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #0a0a0a;
-          font-size: 1.25rem;
-          box-shadow: 0 8px 30px rgba(212, 175, 55, 0.2);
-          transition: transform 0.25s ease;
-        }
-        .video-card:hover .play-btn {
-          transform: scale(1.06);
-        }
 
-        @media (min-width: 640px) {
+        @media (min-width: 768px) {
           .video-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(2, 1fr);
           }
         }
+
         @media (min-width: 1024px) {
           .video-grid {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-          }
-          .video-thumb {
-            height: 160px;
+            grid-template-columns: repeat(3, 1fr);
           }
         }
 
-        /* Video modal */
-        .video-modal {
-          display: none;
-          position: fixed;
-          inset: 0;
-          z-index: 1200;
-          align-items: center;
-          justify-content: center;
-          background: rgba(0, 0, 0, 0.8);
+        /* Hide videos on mobile */
+        @media (max-width: 767px) {
+          .hidden-mobile {
+            display: none;
+          }
         }
-        .video-modal.active {
-          display: flex;
-        }
-        .video-modal .inner {
-          width: 94%;
-          max-width: 1100px;
-          aspect-ratio: 16/9;
-          background: #000;
+
+        .video-item {
           border-radius: 12px;
           overflow: hidden;
-          position: relative;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
-        .video-modal .close {
-          position: absolute;
-          right: 12px;
-          top: 12px;
-          z-index: 10;
-          background: transparent;
+
+        .video-item iframe {
+          width: 100%;
+          height: 220px;
           border: 0;
-          color: #fff;
-          font-size: 28px;
+        }
+
+        @media (max-width: 767px) {
+          .video-item iframe {
+            height: 200px;
+          }
         }
       </style>
 
-      <div class="container mx-auto text-center animate-on-scroll">
-        <h2 class="text-4xl md:text-5xl font-serif font-bold mb-3">
+      <div class="container mx-auto text-center">
+        <!-- Heading -->
+        <h2 class="text-4xl md:text-5xl font-serif font-bold mb-3 text-white">
           Cinematic Showreel
         </h2>
 
-        <!-- Premium Golden Divider -->
         <div class="flex flex-col items-center mb-6">
           <span class="w-2 h-2 rounded-full bg-[#d4af37] mb-3"></span>
           <span
             class="w-32 h-px bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"
           ></span>
-          <span class="w-44 h-[2px] bg-[#d4af37]/20 blur-lg mt-1"></span>
         </div>
 
-        <p class="text-xl text-gray-400 mb-8">
-          Experience the magic of our storytelling — click any reel to watch.
+        <p class="text-xl text-gray-400 mb-10">
+          Watch our premium wedding & engagement films.
         </p>
 
-        <div class="video-grid" id="videoGrid">
-          <!-- Cards: replace VIDEO_ID_x with real YouTube IDs -->
-          <div
-            class="video-card"
-            data-video-id="M7lc1UVf-VE"
-            onclick="openVideo(this)"
-          >
-            <img
-              class="video-thumb"
-              src="https://img.youtube.com/vi/M7lc1UVf-VE/hqdefault.jpg"
-              alt="Showreel 1"
-              loading="lazy"
-            />
-            <div class="play-overlay">
-              <div class="play-btn"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="video-meta">
-              <div class="video-title">Cinematic Teaser 1</div>
-              <div class="video-sub">Short showreel · 2:34</div>
-            </div>
+        <!-- Video Grid -->
+        <div class="video-grid">
+          <!-- Video 1 -->
+          <div class="video-item">
+            <iframe
+              src="https://www.youtube.com/embed/M7lc1UVf-VE"
+              allowfullscreen
+            >
+            </iframe>
           </div>
 
-          <div
-            class="video-card"
-            data-video-id="kXYiU_JCYtU"
-            onclick="openVideo(this)"
-          >
-            <img
-              class="video-thumb"
-              src="https://img.youtube.com/vi/kXYiU_JCYtU/hqdefault.jpg"
-              alt="Showreel 2"
-              loading="lazy"
-            />
-            <div class="play-overlay">
-              <div class="play-btn"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="video-meta">
-              <div class="video-title">Cinematic Teaser 2</div>
-              <div class="video-sub">Emotive highlights · 3:12</div>
-            </div>
+          <!-- Video 2 -->
+          <div class="video-item">
+            <iframe
+              src="https://www.youtube.com/embed/kXYiU_JCYtU"
+              allowfullscreen
+            >
+            </iframe>
           </div>
 
-          <div
-            class="video-card"
-            data-video-id="3JZ_D3ELwOQ"
-            onclick="openVideo(this)"
-          >
-            <img
-              class="video-thumb"
-              src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg"
-              alt="Showreel 3"
-              loading="lazy"
-            />
-            <div class="play-overlay">
-              <div class="play-btn"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="video-meta">
-              <div class="video-title">Cinematic Teaser 3</div>
-              <div class="video-sub">Romantic moments · 4:05</div>
-            </div>
+          <!-- Video 3 -->
+          <div class="video-item">
+            <iframe
+              src="https://www.youtube.com/embed/3JZ_D3ELwOQ"
+              allowfullscreen
+            >
+            </iframe>
           </div>
 
-          <div
-            class="video-card"
-            data-video-id="C0DPdy98e4c"
-            onclick="openVideo(this)"
-          >
-            <img
-              class="video-thumb"
-              src="https://img.youtube.com/vi/C0DPdy98e4c/hqdefault.jpg"
-              alt="Showreel 4"
-              loading="lazy"
-            />
-            <div class="play-overlay">
-              <div class="play-btn"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="video-meta">
-              <div class="video-title">Cinematic Teaser 4</div>
-              <div class="video-sub">Venue & details · 2:47</div>
-            </div>
+          <!-- Video 4 (Hidden on Mobile) -->
+          <div class="video-item hidden-mobile">
+            <iframe
+              src="https://www.youtube.com/embed/C0DPdy98e4c"
+              allowfullscreen
+            >
+            </iframe>
           </div>
 
-          <div
-            class="video-card"
-            data-video-id="e-ORhEE9VVg"
-            onclick="openVideo(this)"
-          >
-            <img
-              class="video-thumb"
-              src="https://img.youtube.com/vi/e-ORhEE9VVg/hqdefault.jpg"
-              alt="Showreel 5"
-              loading="lazy"
-            />
-            <div class="play-overlay">
-              <div class="play-btn"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="video-meta">
-              <div class="video-title">Cinematic Teaser 5</div>
-              <div class="video-sub">Emotional edit · 3:50</div>
-            </div>
+          <!-- Video 5 (Hidden on Mobile) -->
+          <div class="video-item hidden-mobile">
+            <iframe
+              src="https://www.youtube.com/embed/e-ORhEE9VVg"
+              allowfullscreen
+            >
+            </iframe>
           </div>
 
-          <div
-            class="video-card"
-            data-video-id="VYOjWnS4cMY"
-            onclick="openVideo(this)"
-          >
-            <img
-              class="video-thumb"
-              src="https://img.youtube.com/vi/VYOjWnS4cMY/hqdefault.jpg"
-              alt="Showreel 6"
-              loading="lazy"
-            />
-            <div class="play-overlay">
-              <div class="play-btn"><i class="fas fa-play"></i></div>
-            </div>
-            <div class="video-meta">
-              <div class="video-title">Cinematic Teaser 6</div>
-              <div class="video-sub">Highlights reel · 2:58</div>
-            </div>
+          <!-- Video 6 (Hidden on Mobile) -->
+          <div class="video-item hidden-mobile">
+            <iframe
+              src="https://www.youtube.com/embed/VYOjWnS4cMY"
+              allowfullscreen
+            >
+            </iframe>
           </div>
         </div>
 
-        <div class="text-center mt-8">
+        <!-- Show More Button (Mobile Only) -->
+        <div class="mt-8">
+          <button
+            id="showMoreVideos"
+            class="bg-[#d4af37] text-black px-7 py-3 rounded-full font-semibold hover:bg-white transition"
+          >
+            Show More
+          </button>
+        </div>
+
+        <!-- Gallery Button -->
+        <!-- <div class="mt-10">
           <a
             href="gallery.html"
-            class="bg-gold text-dark-bg px-8 py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold"
-            >View Full Gallery</a
+            class="bg-[#d4af37] text-black px-8 py-3 rounded-full font-semibold hover:bg-white transition"
           >
-        </div>
+            View Full Gallery
+          </a>
+        </div> -->
       </div>
 
-      <!-- Video Modal -->
-      <div id="videoModal" class="video-modal" onclick="closeVideo(event)">
-        <div class="inner" role="dialog" aria-modal="true">
-          <button
-            class="close"
-            aria-label="Close video"
-            onclick="closeVideo(event)"
-          >
-            &times;
-          </button>
-          <iframe
-            id="videoIframe"
-            width="100%"
-            height="100%"
-            src=""
-            frameborder="0"
-            allow="autoplay; fullscreen"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
-
+      <!-- Script -->
       <script>
-        function openVideo(card) {
-          const id =
-            typeof card === "string"
-              ? card
-              : card.getAttribute("data-video-id");
-          const modal = document.getElementById("videoModal");
-          const iframe = document.getElementById("videoIframe");
-          iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
-          modal.classList.add("active");
-          document.body.style.overflow = "hidden";
-        }
+        // Show More Videos (Mobile)
+        const showMoreBtn = document.getElementById("showMoreVideos");
 
-        function closeVideo(e) {
-          // prevent closing when clicking inside iframe
-          if (e && e.target && e.target.tagName === "IFRAME") return;
-          const modal = document.getElementById("videoModal");
-          const iframe = document.getElementById("videoIframe");
-          iframe.src = "";
-          modal.classList.remove("active");
-          document.body.style.overflow = "auto";
-          if (e) e.stopPropagation();
+        if (showMoreBtn) {
+          showMoreBtn.addEventListener("click", () => {
+            document.querySelectorAll(".hidden-mobile").forEach((video) => {
+              video.classList.remove("hidden-mobile");
+            });
+
+            // Hide button after showing all
+            showMoreBtn.style.display = "none";
+          });
         }
       </script>
     </section>
@@ -1700,6 +1566,13 @@
                   href="gallery.html"
                   class="text-gray-400 hover:text-gold transition-colors duration-300 flex items-center gap-2"
                   ><i class="fas fa-chevron-right text-xs"></i> Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="packages.html"
+                  class="text-gray-400 hover:text-gold transition-colors duration-300 flex items-center gap-2"
+                  ><i class="fas fa-chevron-right text-xs"></i>Packages</a
                 >
               </li>
               <li>
@@ -2048,6 +1921,47 @@
           { passive: false },
         );
       }
+
+      // video card
+      /* =========================
+         Video Modal Script
+         ========================= */
+
+      const videoModal = document.getElementById("videoModal");
+      const videoIframe = document.getElementById("videoIframe");
+
+      function openVideo(card) {
+        const id =
+          typeof card === "string" ? card : card.getAttribute("data-video-id");
+
+        // Stop previous video if any
+        videoIframe.src = "";
+
+        // Load new video
+        videoIframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+
+        videoModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeVideo(e) {
+        if (e && e.target && e.target.tagName === "IFRAME") return;
+
+        // Stop video
+        videoIframe.src = "";
+
+        videoModal.classList.remove("active");
+        document.body.style.overflow = "auto";
+
+        if (e) e.stopPropagation();
+      }
+
+      // Close video on ESC key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && videoModal.classList.contains("active")) {
+          closeVideo();
+        }
+      });
     </script>
   </body>
 </html>
