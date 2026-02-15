@@ -31,7 +31,7 @@
       @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
 
       .fade-in {
-        animation: fadeIn 0.8s ease-in;
+        animation: fadeIn 0.8s ease-in forwards;
       }
       @keyframes fadeIn {
         from {
@@ -104,6 +104,48 @@
       .filter-btn.active {
         background: #d4af37;
         color: #0a0a0a;
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(212, 175, 55, 0.2);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        z-index: 1002;
+      }
+      .lightbox-nav:hover {
+        background: #d4af37;
+        color: #000;
+      }
+      .lightbox-prev {
+        left: 20px;
+      }
+      .lightbox-next {
+        right: 20px;
+      }
+      @media (max-width: 768px) {
+        .lightbox-nav {
+          width: 40px;
+          height: 40px;
+          font-size: 1rem;
+        }
+        .lightbox-prev {
+          left: 10px;
+        }
+        .lightbox-next {
+          right: 10px;
+        }
       }
     </style>
   </head>
@@ -291,14 +333,10 @@
           >
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/hero1.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/hero1.webp"
                 alt="Wedding ceremony"
                 class="w-full rounded-lg"
               />
@@ -318,14 +356,10 @@
           >
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/wcu1.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/wcu1.webp"
                 alt="Pre-wedding shoot"
                 class="w-full rounded-lg"
               />
@@ -338,14 +372,10 @@
           >
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/hero2.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/hero2.webp"
                 alt="Wedding reception"
                 class="w-full rounded-lg"
               />
@@ -358,14 +388,10 @@
           >
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/wcu1.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/wcu1.webp"
                 alt="Bridal portrait"
                 class="w-full rounded-lg"
               />
@@ -375,14 +401,10 @@
           <div class="masonry-item gallery-item candid" data-category="candid">
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/hero3.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/hero3.webp"
                 alt="Candid moment"
                 class="w-full rounded-lg"
               />
@@ -395,14 +417,10 @@
           >
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/cta.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/cta.webp"
                 alt="Wedding details"
                 class="w-full rounded-lg"
               />
@@ -415,14 +433,10 @@
           >
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/wcu2.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/wcu2.webp"
                 alt="Couple portrait"
                 class="w-full rounded-lg"
               />
@@ -432,14 +446,10 @@
           <div class="masonry-item gallery-item candid" data-category="candid">
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/hero1.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/hero1.webp"
                 alt="Wedding celebration"
                 class="w-full rounded-lg"
               />
@@ -452,14 +462,10 @@
           >
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/wcu2.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/wcu2.webp"
                 alt="Groom portrait"
                 class="w-full rounded-lg"
               />
@@ -472,14 +478,10 @@
           >
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/hero2.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/hero2.webp"
                 alt="Wedding rings"
                 class="w-full rounded-lg"
               />
@@ -492,14 +494,10 @@
           >
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/wcu1.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/wcu1.webp"
                 alt="Engagement shoot"
                 class="w-full rounded-lg"
               />
@@ -509,14 +507,10 @@
           <div class="masonry-item gallery-item candid" data-category="candid">
             <div
               class="scale-hover cursor-pointer"
-              onclick="
-                openLightbox(
-                  'https://images.unsplash.com/photo-1460978812857-470ed1c77af0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-                )
-              "
+              onclick="openLightbox('assets/images/hero3.webp')"
             >
               <img
-                src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/hero3.webp"
                 alt="Wedding dance"
                 class="w-full rounded-lg"
               />
@@ -554,7 +548,7 @@
               class="relative aspect-video bg-dark-bg rounded-lg overflow-hidden scale-hover cursor-pointer"
             >
               <img
-                src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/hero1.webp"
                 alt="Wedding video"
                 class="w-full h-full object-cover"
               />
@@ -579,7 +573,7 @@
               class="relative aspect-video bg-dark-bg rounded-lg overflow-hidden scale-hover cursor-pointer"
             >
               <img
-                src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="assets/images/hero2.webp"
                 alt="Wedding video"
                 class="w-full h-full object-cover"
               />
@@ -630,13 +624,25 @@
     </section>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
       <img id="lightbox-img" src="" alt="Gallery image" />
       <button
         class="absolute top-4 right-4 text-white text-3xl hover:text-gold transition-colors"
-        onclick="closeLightbox()"
+        onclick="closeLightbox(event)"
       >
         <i class="fas fa-times"></i>
+      </button>
+      <button
+        class="lightbox-nav lightbox-prev"
+        onclick="navigateLightbox(-1, event)"
+      >
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button
+        class="lightbox-nav lightbox-next"
+        onclick="navigateLightbox(1, event)"
+      >
+        <i class="fas fa-chevron-right"></i>
       </button>
     </div>
 
@@ -840,50 +846,127 @@
       }
 
       // Gallery filtering
-      const filterBtns = document.querySelectorAll(".filter-btn");
-      const galleryItems = document.querySelectorAll(".gallery-item");
+      document.addEventListener("DOMContentLoaded", () => {
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const loadMoreBtn = document.getElementById("load-more");
 
-      filterBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          // Remove active class from all buttons
-          filterBtns.forEach((b) => b.classList.remove("active"));
-          // Add active class to clicked button
-          btn.classList.add("active");
+        let currentFilter = "all";
+        let visibleCount = 6;
+        const itemsPerLoad = 6;
 
-          const filter = btn.getAttribute("data-filter");
+        function renderGallery() {
+          let filteredCount = 0;
 
           galleryItems.forEach((item) => {
-            if (filter === "all" || item.classList.contains(filter)) {
-              item.style.display = "block";
+            const category = item.getAttribute("data-category");
+            const matchesFilter =
+              currentFilter === "all" || category === currentFilter;
+
+            if (matchesFilter) {
+              filteredCount++;
+              if (filteredCount <= visibleCount) {
+                item.style.display = "block";
+                if (!item.classList.contains("fade-in")) {
+                  item.classList.add("fade-in");
+                }
+              } else {
+                item.style.display = "none";
+                item.classList.remove("fade-in");
+              }
             } else {
               item.style.display = "none";
+              item.classList.remove("fade-in");
             }
           });
+
+          // Update Load More button visibility
+          if (loadMoreBtn) {
+            const shouldShow = filteredCount > visibleCount;
+            loadMoreBtn.style.display = shouldShow ? "inline-block" : "none";
+            // Hide parent container to remove margin when button is hidden
+            if (loadMoreBtn.parentElement) {
+              loadMoreBtn.parentElement.style.display = shouldShow
+                ? "block"
+                : "none";
+            }
+          }
+        }
+
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Remove active class from all buttons
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            // Add active class to clicked button
+            btn.classList.add("active");
+
+            currentFilter = btn.getAttribute("data-filter");
+            visibleCount = itemsPerLoad; // Reset to initial count
+            renderGallery();
+          });
         });
+
+        // Load More Click
+        if (loadMoreBtn) {
+          loadMoreBtn.addEventListener("click", () => {
+            visibleCount += itemsPerLoad;
+            renderGallery();
+          });
+        }
+
+        // Initial Render
+        renderGallery();
       });
 
       // Lightbox functionality
+      let currentLightboxIndex = 0;
+      let lightboxImages = [];
+
       function openLightbox(imageSrc) {
+        // Collect visible images based on current filter state
+        const visibleItems = Array.from(
+          document.querySelectorAll(".gallery-item"),
+        ).filter((item) => item.style.display !== "none");
+        lightboxImages = visibleItems.map((item) =>
+          item.querySelector("img").getAttribute("src"),
+        );
+
+        // Find index of clicked image
+        currentLightboxIndex = lightboxImages.findIndex(
+          (src) => src === imageSrc,
+        );
+        if (currentLightboxIndex === -1) currentLightboxIndex = 0;
+
+        updateLightboxImage();
+
         const lightbox = document.getElementById("lightbox");
-        const lightboxImg = document.getElementById("lightbox-img");
-        lightboxImg.src = imageSrc;
         lightbox.classList.add("active");
         document.body.style.overflow = "hidden";
       }
 
-      function closeLightbox() {
+      function closeLightbox(event) {
+        // Prevent closing if clicking on image
+        if (event && event.target.id === "lightbox-img") return;
+
         const lightbox = document.getElementById("lightbox");
         lightbox.classList.remove("active");
         document.body.style.overflow = "auto";
       }
 
-      // Load more functionality (placeholder)
-      document
-        .getElementById("load-more")
-        .addEventListener("click", function () {
-          // This would typically load more images from a server
-          alert("More photos would be loaded here!");
-        });
+      function navigateLightbox(step, event) {
+        if (event) event.stopPropagation();
+        currentLightboxIndex =
+          (currentLightboxIndex + step + lightboxImages.length) %
+          lightboxImages.length;
+        updateLightboxImage();
+      }
+
+      function updateLightboxImage() {
+        const lightboxImg = document.getElementById("lightbox-img");
+        if (lightboxImages.length > 0) {
+          lightboxImg.src = lightboxImages[currentLightboxIndex];
+        }
+      }
 
       // Animation on scroll
       const observerOptions = {
@@ -909,6 +992,10 @@
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") {
           closeLightbox();
+        }
+        if (document.getElementById("lightbox").classList.contains("active")) {
+          if (e.key === "ArrowLeft") navigateLightbox(-1);
+          if (e.key === "ArrowRight") navigateLightbox(1);
         }
       });
     </script>
