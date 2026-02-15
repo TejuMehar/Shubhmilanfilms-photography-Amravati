@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Packages - Shubhmilanfilms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "dark-bg": "#0a0a0a",
+              gold: "#d4af37",
+              "dark-gray": "#1a1a1a",
+            },
+            fontFamily: {
+              serif: ["Playfair Display", "serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
+      .navbar-blur {
+        backdrop-filter: blur(10px);
+        background: rgba(10, 10, 10, 0.9);
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 60;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+      }
+      .mobile-menu.active {
+        right: 0;
+      }
+
+      .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        z-index: 59;
+      }
+      .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-white font-sans">
+    <!-- Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 navbar-blur border-b border-gray-800 transition-all duration-300"
+    >
+      <div class="container mx-auto px-10 py-4">
+        <div class="flex justify-between items-center">
+          <div class="text-3xl font-serif font-bold text-gold">
+            <a href="index.html" class="hover:opacity-95 transition-opacity">
+              <img
+                src="assets/lShubhamilan.png"
+                alt="Shubhmilanfilms"
+                class="h-12 w-38"
+              />
+            </a>
+          </div>
+
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="index.html"
+              class="hover:text-gold transition-colors text-white"
+              >Home</a
+            >
+            <a href="about.html" class="hover:text-gold transition-colors"
+              >About</a
+            >
+            <a href="services.html" class="hover:text-gold transition-colors"
+              >Services</a
+            >
+            <a href="gallery.html" class="hover:text-gold transition-colors"
+              >Gallery</a
+            >
+            <a href="packages.html" class="hover:text-gold transition-colors"
+              >Packages</a
+            >
+            <a href="contact.html" class="hover:text-gold transition-colors"
+              >Contact</a
+            >
+          </div>
+
+          <div class="hidden md:block">
+            <a
+              href="contact.html"
+              class="bg-gold text-dark-bg px-6 py-2 rounded-full hover:bg-white transition-all duration-300 font-medium"
+            >
+              Book Now
+            </a>
+          </div>
+
+          <button class="md:hidden text-white" id="mobile-menu-btn">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Overlay -->
+    <div
+      class="mobile-overlay"
+      id="mobile-overlay"
+      onclick="closeMobileMenu()"
+    ></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <div class="flex flex-col h-full p-6">
+        <div class="flex justify-between items-center mb-8">
+          <span class="text-2xl font-serif font-bold text-gold">Menu</span>
+          <button class="text-white text-2xl" onclick="closeMobileMenu()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+          <a
+            href="index.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >About</a
+          >
+          <a
+            href="services.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Services</a
+          >
+          <a
+            href="gallery.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Gallery</a
+          >
+          <a
+            href="packages.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Packages</a
+          >
+          <a
+            href="contact.html"
+            class="text-white hover:text-gold transition-colors text-lg"
+            onclick="closeMobileMenu()"
+            >Contact</a
+          >
+          <a
+            href="contact.html"
+            class="bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-medium text-center mt-4"
+            onclick="closeMobileMenu()"
+          >
+            Book Now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section
+      class="pt-32 pb-20 px-6 bg-gradient-to-b from-dark-gray to-dark-bg"
+    >
+      <div class="container mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-serif font-bold mb-6">
+          Our <span class="text-gold">Packages</span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Choose the perfect package for your special day
+        </p>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="py-20 px-6">
+      <div class="container mx-auto max-w-6xl">
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Essential -->
+          <div
+            class="bg-dark-gray p-8 rounded-lg border border-gray-800 hover:border-gold transition-all duration-300"
+          >
+            <h3 class="text-2xl font-serif font-bold mb-4 text-white">
+              Essential
+            </h3>
+            <div class="text-4xl font-bold text-gold mb-6">₹75,000</div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-gold mr-3"></i>6 hours coverage
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-gold mr-3"></i>300+ edited photos
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-gold mr-3"></i>Online gallery
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-gold mr-3"></i>Basic highlight reel
+              </li>
+            </ul>
+            <a
+              href="contact.html"
+              class="block bg-gold text-dark-bg py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold text-center"
+              >Choose Package</a
+            >
+          </div>
+
+          <!-- Premium -->
+          <div
+            class="bg-gradient-to-b from-gold to-yellow-600 p-8 rounded-lg relative transform scale-105"
+          >
+            <div
+              class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-dark-bg text-gold px-4 py-1 rounded-full text-sm font-semibold"
+            >
+              Most Popular
+            </div>
+            <h3 class="text-2xl font-serif font-bold mb-4 text-dark-bg">
+              Premium
+            </h3>
+            <div class="text-4xl font-bold text-dark-bg mb-6">₹1,25,000</div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-dark-bg">
+                <i class="fas fa-check text-dark-bg mr-3"></i>Full day coverage
+              </li>
+              <li class="flex items-center text-dark-bg">
+                <i class="fas fa-check text-dark-bg mr-3"></i>500+ edited photos
+              </li>
+              <li class="flex items-center text-dark-bg">
+                <i class="fas fa-check text-dark-bg mr-3"></i>Cinematic wedding
+                film
+              </li>
+              <li class="flex items-center text-dark-bg">
+                <i class="fas fa-check text-dark-bg mr-3"></i>Pre-wedding shoot
+              </li>
+            </ul>
+            <a
+              href="contact.html"
+              class="block bg-dark-bg text-gold py-3 rounded-full hover:bg-dark-gray transition-all duration-300 font-semibold text-center"
+              >Choose Package</a
+            >
+          </div>
+
+          <!-- Luxury -->
+          <div
+            class="bg-dark-gray p-8 rounded-lg border border-gray-800 hover:border-gold transition-all duration-300"
+          >
+            <h3 class="text-2xl font-serif font-bold mb-4 text-white">
+              Luxury
+            </h3>
+            <div class="text-4xl font-bold text-gold mb-6">₹2,00,000</div>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-gold mr-3"></i>Multi-day coverage
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-gold mr-3"></i>1000+ edited photos
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-gold mr-3"></i>Complete film package
+              </li>
+              <li class="flex items-center text-gray-300">
+                <i class="fas fa-check text-gold mr-3"></i>Drone photography
+              </li>
+            </ul>
+            <a
+              href="contact.html"
+              class="block bg-gold text-dark-bg py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold text-center"
+              >Choose Package</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="relative bg-gradient-to-b from-dark-gray via-dark-bg to-black border-t border-gold/20 overflow-hidden"
+    >
+      <div class="absolute inset-0 opacity-5">
+        <div
+          class="absolute top-10 left-10 w-32 h-32 bg-gold rounded-full blur-3xl animate-pulse"
+        ></div>
+        <div
+          class="absolute bottom-10 right-10 w-40 h-40 bg-gold rounded-full blur-3xl animate-pulse"
+          style="animation-delay: 1s"
+        ></div>
+      </div>
+      <div class="container mx-auto px-6 py-16 relative z-10">
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-12 mb-12">
+          <div class="space-y-6">
+            <h3 class="text-3xl font-serif font-bold text-gold">
+              Shubhmilanfilms
+            </h3>
+            <p class="text-gray-400 leading-relaxed">
+              Crafting cinematic wedding films and timeless photography.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="#"
+                class="w-10 h-10 bg-gold/10 hover:bg-gold rounded-full flex items-center justify-center text-gold hover:text-dark-bg transition-all duration-300 hover:scale-110"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gold/10 hover:bg-gold rounded-full flex items-center justify-center text-gold hover:text-dark-bg transition-all duration-300 hover:scale-110"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gold/10 hover:bg-gold rounded-full flex items-center justify-center text-gold hover:text-dark-bg transition-all duration-300 hover:scale-110"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 bg-gold/10 hover:bg-gold rounded-full flex items-center justify-center text-gold hover:text-dark-bg transition-all duration-300 hover:scale-110"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <h4 class="text-xl font-serif font-semibold text-white">
+              Quick Links
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-400 hover:text-gold transition-colors flex items-center gap-2"
+                  ><i class="fas fa-chevron-right text-xs"></i> Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-400 hover:text-gold transition-colors flex items-center gap-2"
+                  ><i class="fas fa-chevron-right text-xs"></i> About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="services.html"
+                  class="text-gray-400 hover:text-gold transition-colors flex items-center gap-2"
+                  ><i class="fas fa-chevron-right text-xs"></i> Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="packages.html"
+                  class="text-gray-400 hover:text-gold transition-colors flex items-center gap-2"
+                  ><i class="fas fa-chevron-right text-xs"></i> Packages</a
+                >
+              </li>
+              <li>
+                <a
+                  href="gallery.html"
+                  class="text-gray-400 hover:text-gold transition-colors flex items-center gap-2"
+                  ><i class="fas fa-chevron-right text-xs"></i> Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-400 hover:text-gold transition-colors flex items-center gap-2"
+                  ><i class="fas fa-chevron-right text-xs"></i> Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-6">
+            <h4 class="text-xl font-serif font-semibold text-white">
+              Our Services
+            </h4>
+            <ul class="space-y-3">
+              <li class="text-gray-400 flex items-center gap-2">
+                <i class="fas fa-camera text-gold text-xs"></i> Wedding
+                Photography
+              </li>
+              <li class="text-gray-400 flex items-center gap-2">
+                <i class="fas fa-heart text-gold text-xs"></i> Pre-Wedding
+                Shoots
+              </li>
+              <li class="text-gray-400 flex items-center gap-2">
+                <i class="fas fa-video text-gold text-xs"></i> Cinematic Films
+              </li>
+              <li class="text-gray-400 flex items-center gap-2">
+                <i class="fas fa-users text-gold text-xs"></i> Candid
+                Photography
+              </li>
+              <li class="text-gray-400 flex items-center gap-2">
+                <i class="fas fa-helicopter text-gold text-xs"></i> Drone
+                Photography
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-6">
+            <h4 class="text-xl font-serif font-semibold text-white">
+              Get In Touch
+            </h4>
+            <div class="space-y-4">
+              <a
+                href="tel:+919876543210"
+                class="flex items-start gap-3 text-gray-400 hover:text-gold transition-colors"
+                ><i class="fas fa-phone text-gold mt-1"></i
+                ><span>+91 98765 43210</span></a
+              >
+              <a
+                href="mailto:hello@shubhmilanfilms.com"
+                class="flex items-start gap-3 text-gray-400 hover:text-gold transition-colors"
+                ><i class="fas fa-envelope text-gold mt-1"></i
+                ><span>hello@shubhmilanfilms.com</span></a
+              >
+              <div class="flex items-start gap-3 text-gray-400">
+                <i class="fas fa-map-marker-alt text-gold mt-1"></i
+                ><span>Mumbai, India</span>
+              </div>
+            </div>
+            <a
+              href="contact.html"
+              class="inline-block bg-gold text-dark-bg px-6 py-3 rounded-full hover:bg-white transition-all duration-300 font-semibold text-sm hover:scale-105"
+              >Book Now</a
+            >
+          </div>
+        </div>
+        <div class="border-t border-gold/20 mb-8"></div>
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400 text-sm"
+        >
+          <p>&copy; 2024 Shubhmilanfilms. All rights reserved.</p>
+          <p class="flex items-center gap-2">
+            Crafted with <span class="text-red-500 animate-pulse">❤</span> for
+            timeless memories
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileOverlay = document.getElementById("mobile-overlay");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+        mobileOverlay.classList.toggle("active");
+      });
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove("active");
+        mobileOverlay.classList.remove("active");
+      }
+    </script>
+  </body>
+</html>
